@@ -1,13 +1,16 @@
 from model_base import *
+from model_school import *
+from model_city import *
 from peewee import *
 from random import randint
 
 
 class Applicant(BaseModel):
-    name = CharField()
-    city = CharField()
+    first_name = CharField()
+    last_name = CharField()
+    city = ForeignKeyField(City, null=True, related_name="home")
     application_code = IntegerField(null=True)
-    school = CharField(null=True)
+    school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
 
     @classmethod
