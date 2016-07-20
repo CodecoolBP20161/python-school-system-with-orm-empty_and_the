@@ -8,7 +8,7 @@ from random import randint
 class Applicant(BaseModel):
     first_name = CharField()
     last_name = CharField()
-    city = ForeignKeyField(City, null=True, related_name="home")
+    city = ForeignKeyField(City, related_name="home")
     application_code = IntegerField(null=True)
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
@@ -23,4 +23,12 @@ class Applicant(BaseModel):
         object_list = cls.new_applicant()
         for element in object_list:
             element.application_code = randint(10000, 99999)
+            element.save()
+
+    @classmethod
+    def closest_school(cls):
+        object_list = cls.new_applicant()
+        for element in object_list:
+            print(element.school, element.city.school)
+            element.school = element.city.school
             element.save()
