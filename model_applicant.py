@@ -12,10 +12,12 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
 
+    def get_status_and_school(self):
+        return self.status, self.school.name
+
     @classmethod
-    def get_status_and_school_by_application_code(cls, appl_code):
-            applicant = cls.select().where(cls.application_code == appl_code).get()
-            return applicant.status, applicant.school.name
+    def get_applicant_object_by_application_code(cls, appl_code):
+        return cls.select().where(cls.application_code == appl_code).get()
 
     @classmethod
     def new_applicant(cls):
