@@ -22,5 +22,17 @@ class Applicant(BaseModel):
     def application_code_generator(cls):
         object_list = cls.new_applicant()
         for element in object_list:
-            element.application_code = randint(10000, 99999)
-            element.save()
+                element.application_code = cls.get_free_application_code(object_list)
+                element.save()
+
+    @staticmethod
+    def get_free_application_code(object_list):
+        while True:
+            continue_boolean = False
+            random_code = randint(10000, 99999)
+            for element in object_list:
+                if element.application_code == random_code:
+                    continue_boolean = True
+            if continue_boolean is True:
+                continue
+            return random_code
