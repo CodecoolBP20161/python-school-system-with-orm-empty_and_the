@@ -1,7 +1,6 @@
 from model_base import *
 from model_school import *
 from model_city import *
-from peewee import *
 from random import randint
 
 
@@ -12,6 +11,11 @@ class Applicant(BaseModel):
     application_code = IntegerField(null=True)
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
+
+    @classmethod
+    def get_status_and_school_by_application_code(cls, appl_code):
+            applicant = cls.select().where(cls.application_code == appl_code).get()
+            return applicant.status, applicant.school.name
 
     @classmethod
     def new_applicant(cls):
