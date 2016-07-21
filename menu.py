@@ -1,5 +1,7 @@
 from model_applicant import *
 from model_interview import *
+from model_question import *
+from model_answer import *
 
 
 class Menu:
@@ -23,15 +25,30 @@ class Menu:
     @classmethod
     def applicant_submenu(cls, applicant):
         print("\nApplicant submenu\n----------------------")
-        print("\n1. Application details\n2. Interview details\nX. Exit to Main menu\n")
+        print("\n1. Application details\n2. Interview details\n3. Questions\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             print("\nApplication code: {0}\nStatus: {1}\nSchool: {2}"
                   .format(applicant.application_code, applicant.status, applicant.school.name))
             cls.applicant_submenu(applicant)
-        if g == "2":
-            print("\nInterview date and time: {0}\nSchool: {1}\nMentor: {2}"
-                  .format(applicant.interview.get().date_time, applicant.school.name, applicant.interview.get().mentor))
+        elif g == "2":
+            try:
+                print("\nInterview date and time: {0}\nSchool: {1}\nMentor: {2}"
+                      .format(applicant.interview.get().date_time, applicant.school.name,
+                              applicant.interview.get().mentor))
+            except Interview.DoesNotExist:
+                print("\nNo interview registered for application code: {} in the database."
+                      .format(applicant.application_code))
+            cls.applicant_submenu(applicant)
+        elif g == "3":
+            print("\nApplication code: {0}".format(applicant.application_code))
+            for_boolean = False
+            for i in Answer.get_answers_by_application_code(applicant.application_code):
+                    for_boolean = True
+                    print("\nQuestion: {0}\nQuestion status: {1}\nAnswer: {2}".format(i[0], i[1], i[2]))
+            if for_boolean is False:
+                print("\nNo questions registered for application code: {} in the database."
+                      .format(applicant.application_code))
             cls.applicant_submenu(applicant)
         elif g == "X" or g == "x":
             cls.main_menu()

@@ -1,7 +1,21 @@
 from model_base import *
 from model_question import *
+from model_applicant import *
 
 
 class Answer(BaseModel):
-    answer = CharField()
-    question = ForeignKeyField(Question, related_name="answer")
+    answer_text = CharField()
+    question = ForeignKeyField(Question, related_name="appl_answer")
+
+    @classmethod
+    def get_answers_by_application_code(cls, user_input):
+        answers = cls.select(
+            Applicant,
+            Question,
+            cls).join(
+            Question,
+            JOIN.RIGHT_OUTER).join(Applicant).where(
+            Applicant.application_code == user_input)
+        for element in answers:
+            yield (element.question.question_text,
+                   element.question.question_status, element.answer_text)

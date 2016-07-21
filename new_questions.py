@@ -7,13 +7,13 @@ from model_applicant import *
 from model_answer import *
 from new_applicants import *
 
-question1 = Question.create(question="2 + 2 = ?", status="answered", applicant=antal)
-question2 = Question.create(question="5 * 6 = ?", status="new", applicant=maria)
-question3 = Question.create(question="3 - 7 = ?", status="waiting for answer", applicant=maria)
-question4 = Question.create(question="15 * 3 = ?", status="new", applicant=maria)
-question5 = Question.create(question="16 / 4 = ?", status="answered", applicant=ilona)
-question6 = Question.create(question="10 * 10 = ?", status="answered", applicant=lajos)
+question1 = Question.create(question_text="2 + 2 = ?", question_status="answered", applicant=antal)
+question2 = Question.create(question_text="5 * 6 = ?", question_status="new", applicant=maria)
+question3 = Question.create(question_text="3 - 7 = ?", question_status="waiting for answer", applicant=maria)
+question4 = Question.create(question_text="15 * 3 = ?", question_status="new", applicant=maria)
+question5 = Question.create(question_text="16 / 4 = ?", question_status="answered", applicant=ilona)
+question6 = Question.create(question_text="10 * 10 = ?", question_status="answered", applicant=lajos)
 
-answer1 = Answer.create(answer="4", question=question1)
-answer1 = Answer.create(answer="4", question=question5)
-answer1 = Answer.create(answer="100", question=question6)
+answer1 = Answer.create(answer_text="4", question=question1)
+answer1 = Answer.create(answer_text="4", question=question5)
+answer1 = Answer.create(answer_text="100", question=question6)

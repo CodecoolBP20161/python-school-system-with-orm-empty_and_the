@@ -52,6 +52,5 @@ lajos = Applicant.create(
 
 Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor="miki", applicant=antal)
 Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor="miki", applicant=maria)
-Interview.create(date_time=datetime(2016, 1, 6, 12, 30), mentor="dani", applicant=python)
 Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor="dani", applicant=ilona)
 Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor="tomi", applicant=lajos)
