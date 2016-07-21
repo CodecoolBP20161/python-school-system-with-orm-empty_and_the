@@ -1,25 +1,19 @@
-# New questions (from random applicants) created into your project database by this script.
-# You can run it anytime to generate new questions!
+# New Question (from random applicants) created into your project database by this script.
+# You can run it anytime to generate new Question!
 
 from model_base import *
-from model_questions import *
+from model_question import *
+from model_applicant import *
+from model_answer import *
 from new_applicants import *
 
-Questions.create(question="2 + 2 = ?", status="answered", related_applicant=antal, related_answer="4")
-Questions.create(question="5 * 6 = ?")
-Questions.create(question="3 - 7 = ?")
-Questions.create(question="15 * 3 = ?")
-Questions.create(question="16 / 4 = ?")
-Questions.create(question="10 * 10 = ?")
-Questions.create(question="25 / 5 = ?")
-Questions.create(question="60 - 22 = ?")
-Questions.create(question="40 + 5= ?")
-Questions.create(question="17 + 32 = ?")
-Questions.create(question="34 - 19 = ?")
-Questions.create(question="99 / 3= ?")
-Questions.create(question="74 + 23= ?")
-Questions.create(question="42 / 6 = ?")
-Questions.create(question="12 * 4 = ?")
-Questions.create(question="37 - 18 = ?")
-Questions.create(question="59 + 48 = ?")
-Questions.create(question="7 * 16 = ?")
+question1 = Question.create(question="2 + 2 = ?", status="answered", applicant=antal)
+question2 = Question.create(question="5 * 6 = ?", status="new", applicant=maria)
+question3 = Question.create(question="3 - 7 = ?", status="waiting for answer", applicant=maria)
+question4 = Question.create(question="15 * 3 = ?", status="new", applicant=maria)
+question5 = Question.create(question="16 / 4 = ?", status="answered", applicant=ilona)
+question6 = Question.create(question="10 * 10 = ?", status="answered", applicant=lajos)
+
+answer1 = Answer.create(answer="4", question=question1)
+answer1 = Answer.create(answer="4", question=question5)
+answer1 = Answer.create(answer="100", question=question6)
