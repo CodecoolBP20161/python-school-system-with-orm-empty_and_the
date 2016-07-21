@@ -12,8 +12,6 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
 
-    def get_status_and_school(self):
-        return self.status, self.school.name
 
     @classmethod
     def get_applicant_object_by_application_code(cls, appl_code):
@@ -32,7 +30,7 @@ class Applicant(BaseModel):
                 element.save()
 
     @classmethod
-    def closest_school(cls):
+    def get_closest_school(cls):
         object_list = cls.new_applicant()
         for element in object_list:
             element.school = element.city.school
