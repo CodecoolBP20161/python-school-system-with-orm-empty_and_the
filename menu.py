@@ -1,4 +1,5 @@
 from model_applicant import *
+# from model_interview import *
 
 
 class Menu:
@@ -21,11 +22,16 @@ class Menu:
 
     @classmethod
     def applicant_submenu(cls, applicant):
-        print("\nApplicant submenu\n----------------------\n1. Application details\nX. Exit to Main menu\n")
+        print("\nApplicant submenu\n----------------------")
+        print("\n1. Application details\n2. Interview details\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             print("\nApplication code: {0}\nStatus: {1}\nSchool: {2}"
                   .format(applicant.application_code, applicant.status, applicant.school.name))
+            cls.applicant_submenu(applicant)
+        if g == "2":
+            print("\nInterview date and time: {0}\nSchool: {1}\nMentor: {2}"
+                  .format(interview.date_time, interview.school, interview.mentor))
             cls.applicant_submenu(applicant)
         elif g == "X" or g == "x":
             cls.main_menu()
