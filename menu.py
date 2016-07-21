@@ -5,7 +5,7 @@ class Menu:
 
     @classmethod
     def administrator_submenu(cls):
-        print("\nAdministrator submenu\n1. Handle new applications\nX. Exit to Main menu\n")
+        print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             Applicant.get_closest_school()
@@ -21,7 +21,7 @@ class Menu:
 
     @classmethod
     def applicant_submenu(cls, applicant):
-        print("\nApplicant submenu\n1. Application details\nX. Exit to Main menu\n")
+        print("\nApplicant submenu\n----------------------\n1. Application details\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             print("\nApplication code: {0}\nStatus: {1}\nSchool: {2}"
@@ -50,7 +50,7 @@ class Menu:
 
     @classmethod
     def main_menu(cls):
-        print("\nMain Menu\n1. Administrator\n2. Applicant\nX. Exit\n")
+        print("\nMain Menu\n----------------\n1. Administrator\n2. Applicant\nX. Exit\n")
         g = input("Choose a user: ")
         if g == "1":
             Menu.administrator_submenu()
