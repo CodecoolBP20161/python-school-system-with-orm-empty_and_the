@@ -12,7 +12,6 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
 
-
     @classmethod
     def get_applicant_object_by_application_code(cls, appl_code):
         return cls.select().where(cls.application_code == appl_code).get()
