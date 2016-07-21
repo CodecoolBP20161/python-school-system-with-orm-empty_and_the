@@ -32,6 +32,19 @@ def applicant_submenu():
         print("Wrong number!")
         applicant_submenu()
 
+def applicant_code():
+    try:
+        user_input = int(input("Please, enter an Application code: "))
+        if user_input > 99999 or user_input < 10000:
+            raise ValueError
+        applicant = Applicant.get_applicant_object_by_application_code(user_input)
+    except ValueError:
+        print("This is not a valid Application code, try again!")
+        main()
+    except:
+        print("This Application code is not in the database!")
+        main()
+
 
 def main():
     print("\nMain Menu\n1. Administrator\n2. Applicant\nX. Exit\n")
@@ -39,6 +52,7 @@ def main():
     if g == "1":
         administrator_submenu()
     elif g == "2":
+        applicant_code()
         applicant_submenu()
     elif g == "X" or "x":
         exit()
