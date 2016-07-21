@@ -1,5 +1,5 @@
 from model_applicant import *
-# from model_interview import *
+from model_interview import *
 
 
 class Menu:
@@ -31,7 +31,7 @@ class Menu:
             cls.applicant_submenu(applicant)
         if g == "2":
             print("\nInterview date and time: {0}\nSchool: {1}\nMentor: {2}"
-                  .format(interview.date_time, interview.school, interview.mentor))
+                  .format(applicant.interview.get().date_time, applicant.school.name, applicant.interview.get().mentor))
             cls.applicant_submenu(applicant)
         elif g == "X" or g == "x":
             cls.main_menu()
