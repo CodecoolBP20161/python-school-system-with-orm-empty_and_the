@@ -2,6 +2,7 @@ from model_applicant import *
 from model_interview import *
 from model_question import *
 from model_answer import *
+from model_mentor import *
 
 
 class Menu:
@@ -57,16 +58,16 @@ class Menu:
             cls.applicant_submenu(applicant)
 
     @classmethod
-    def mentor_submenu(cls):
+    def mentor_submenu(cls, mentor):
         print("\nMentor submenu\n--------------------------\n1. Interviews\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
-            cls.mentor_submenu()
+            cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             cls.main_menu()
         else:
             print("Not a valid option!")
-            cls.mentor_submenu()
+            cls.mentor_submenu(mentor)
 
     @classmethod
     def get_applicant_object(cls):
@@ -84,16 +85,32 @@ class Menu:
             cls.main_menu()
 
     @classmethod
+    def get_mentor_object(cls):
+        try:
+            user_input = int(input("Please enter your password: "))
+            if user_input > 99999 or user_input < 10000:
+                raise ValueError
+            mentor = Mentor.get_mentor_object_by_password(user_input)
+            return mentor
+        except ValueError:
+            print("This is not a valid password, try again!")
+            cls.main_menu()
+        except Mentor.DoesNotExist:
+            print("This Mentor is not in the database!")
+            cls.main_menu()
+
+    @classmethod
     def main_menu(cls):
         print("\nMain Menu\n----------------\n1. Administrator\n2. Applicant\n3. Mentor\nX. Exit")
         g = input("Choose a user: ")
         if g == "1":
-            Menu.administrator_submenu()
+            cls.administrator_submenu()
         elif g == "2":
             applicant = cls.get_applicant_object()
-            Menu.applicant_submenu(applicant)
+            cls.applicant_submenu(applicant)
         elif g == "3":
-            Menu.mentor_submenu()
+            mentor = cls.get_mentor_object()
+            cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             exit()
         else:
