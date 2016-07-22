@@ -6,6 +6,7 @@ from model_applicant import *
 from example_data import *
 from datetime import datetime
 from model_interview import *
+from new_mentors import *
 
 Applicant.create(first_name="Smith", last_name="John", city=city_varso)
 Applicant.create(first_name="Smith", last_name="Jane", city=city_liszki)
@@ -50,7 +51,7 @@ lajos = Applicant.create(
     school=class_krakow,
     status="in progress")
 
-Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor="miki", applicant=antal)
-Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor="miki", applicant=maria)
-Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor="dani", applicant=ilona)
-Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor="tomi", applicant=lajos)
+Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor=mikimentor, applicant=antal)
+Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor=danimentor, applicant=maria)
+Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor=tomimentor, applicant=ilona)
+Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor=krakowmentor, applicant=lajos)
