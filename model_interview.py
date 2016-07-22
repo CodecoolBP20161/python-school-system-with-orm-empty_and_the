@@ -13,7 +13,7 @@ class Interview(BaseModel):
             Applicant, cls).join(Applicant).where(
             Applicant.application_code == user_input).get()
         return (
-            interview_object.applicant.application_code,
+            interview_object.date_time,
             interview_object.applicant.school.name,
             interview_object.mentor.first_name,
             interview_object.mentor.last_name)
