@@ -1,3 +1,2 @@
 from build import *
-from new_questions import *
-from new_interviews import *
+from new_questions_interviews import *

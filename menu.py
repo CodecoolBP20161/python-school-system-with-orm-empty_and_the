@@ -62,6 +62,13 @@ class Menu:
         print("\nMentor submenu\n--------------------------\n1. Interviews\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
+            for_boolean = False
+            for i in Interview.get_interviews_by_password(mentor.mentor_password):
+                    for_boolean = True
+                    print("\nInterview time: {0}\nApplication code: {1}\nApplicant: {2} {3}"
+                          .format(i[0], i[1], i[2], i[3]))
+            if for_boolean is False:
+                print("\nNo interviews registered for this mentor in the database.")
             cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             cls.main_menu()
