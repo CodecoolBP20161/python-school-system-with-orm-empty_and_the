@@ -57,6 +57,18 @@ class Menu:
             cls.applicant_submenu(applicant)
 
     @classmethod
+    def mentor_submenu(cls):
+        print("\nMentor submenu\n--------------------------\n1. Interviews\nX. Exit to Main menu\n")
+        g = input("Choose an option: ")
+        if g == "1":
+            cls.mentor_submenu()
+        elif g == "X" or g == "x":
+            cls.main_menu()
+        else:
+            print("Not a valid option!")
+            cls.mentor_submenu()
+
+    @classmethod
     def get_applicant_object(cls):
         try:
             user_input = int(input("Please, enter an Application code: "))
@@ -73,13 +85,15 @@ class Menu:
 
     @classmethod
     def main_menu(cls):
-        print("\nMain Menu\n----------------\n1. Administrator\n2. Applicant\nX. Exit\n")
+        print("\nMain Menu\n----------------\n1. Administrator\n2. Applicant\n3. Mentor\nX. Exit")
         g = input("Choose a user: ")
         if g == "1":
             Menu.administrator_submenu()
         elif g == "2":
             applicant = cls.get_applicant_object()
             Menu.applicant_submenu(applicant)
+        elif g == "3":
+            Menu.mentor_submenu()
         elif g == "X" or g == "x":
             exit()
         else:
