@@ -89,3 +89,5 @@ ENV/
 .ropeproject
 
 task4.py
+
+.idea/

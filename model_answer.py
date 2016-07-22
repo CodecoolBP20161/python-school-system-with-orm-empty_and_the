@@ -1,4 +1,3 @@
-from model_base import *
 from model_question import *
 from model_applicant import *
 

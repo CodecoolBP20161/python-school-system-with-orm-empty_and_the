@@ -1,5 +1,4 @@
 from model_mentor import *
-from model_school import *
 from example_data import *
 
 

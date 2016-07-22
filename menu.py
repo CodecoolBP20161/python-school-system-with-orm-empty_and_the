@@ -1,6 +1,4 @@
-from model_applicant import *
 from model_interview import *
-from model_question import *
 from model_answer import *
 from model_mentor import *
 

@@ -1,10 +1,7 @@
 # New applicants arrive into your project database by this script.
 # You can run it anytime to generate new data!
 
-from model_base import *
-from model_applicant import *
-from example_data import *
-from datetime import datetime
+
 from model_interview import *
 from new_mentors import *
 

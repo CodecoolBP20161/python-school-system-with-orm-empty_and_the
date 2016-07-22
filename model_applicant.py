@@ -1,5 +1,3 @@
-from model_base import *
-from model_school import *
 from model_city import *
 from random import randint
 
