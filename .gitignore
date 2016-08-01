@@ -91,5 +91,3 @@ ENV/
 task4.py
 
 .idea/
-
-model_base.py
