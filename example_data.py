@@ -36,11 +36,11 @@ city_varso = City.create(name="Varsó", school=class_krakow)
 city_berlin = City.create(name="Berlin", school=class_krakow)
 
 # generating mentors
-danimentor = Mentor.create(first_name="Dániel", last_name="Salamon", school=class_budapest, mentor_password=11111)
-mikimentor = Mentor.create(first_name="Miklós", last_name="Beöthy", school=class_budapest, mentor_password=22222)
-tomimentor = Mentor.create(first_name="Tamás", last_name="Tompa", school=class_budapest, mentor_password=33333)
-miskolcmentor = Mentor.create(first_name="Mihály", last_name="Miskolc", school=class_miskolc, mentor_password=44444)
-krakowmentor = Mentor.create(first_name="Károly", last_name="Krakow", school=class_krakow, mentor_password=55555)
+danimentor = Mentor.create(first_name="Dániel", last_name="Salamon", school=class_budapest, mentor_password=111111)
+mikimentor = Mentor.create(first_name="Miklós", last_name="Beöthy", school=class_budapest, mentor_password=222222)
+tomimentor = Mentor.create(first_name="Tamás", last_name="Tompa", school=class_budapest, mentor_password=333333)
+miskolcmentor = Mentor.create(first_name="Mihály", last_name="Miskolc", school=class_miskolc, mentor_password=444444)
+krakowmentor = Mentor.create(first_name="Károly", last_name="Krakow", school=class_krakow, mentor_password=555555)
 
 # generate new applicants without application_code
 Applicant.create(first_name="Smith", last_name="John", city=city_varso)

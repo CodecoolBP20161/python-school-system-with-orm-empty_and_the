@@ -94,7 +94,7 @@ class Menu:
     def get_mentor_object(cls):
         try:
             user_input = int(input("Please enter your password: "))
-            if user_input > 99999 or user_input < 10000:
+            if user_input > 999999 or user_input < 100000:
                 raise ValueError
             mentor = Mentor.get_mentor_object_by_password(user_input)
             return mentor
