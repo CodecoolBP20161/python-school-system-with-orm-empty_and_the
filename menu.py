@@ -10,9 +10,10 @@ class Menu:
         print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
-            Applicant.get_closest_school()
+            object_list = Applicant.new_applicant()
+            Applicant.get_closest_school(object_list)
             print("System message: Closest school connected to the applicants.")
-            Applicant.application_code_generator()
+            Applicant.application_code_generator(object_list)
             print("System message: Application code generated for the applicants.")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
