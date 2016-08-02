@@ -106,3 +106,13 @@ Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor_1=mikimentor, m
 Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor_1=danimentor, mentor_2=tomimentor, applicant=maria)
 Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor_1=krakowmentor, mentor_2=polandmentor, applicant=ilona)
 Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor_1=polishmentor, mentor_2=krakowmentor, applicant=lajos)
+
+# generate Interview_slot
+Interview_slot.create(start=datetime(2016, 9, 6, 13, 10), end=datetime(2016, 9, 6, 14, 10),
+                      reserved=False, mentor=mikimentor)
+Interview_slot.create(start=datetime(2016, 9, 6, 13, 10), end=datetime(2016, 9, 6, 14, 10),
+                      reserved=False, mentor=tomimentor)
+Interview_slot.create(start=datetime(2016, 9, 12, 9, 30), end=datetime(2016, 9, 12, 10, 30),
+                      reserved=False, mentor=mikimentor)
+Interview_slot.create(start=datetime(2016, 9, 15, 11, 00), end=datetime(2016, 9, 15, 12, 00),
+                      reserved=True, mentor=danimentor)
