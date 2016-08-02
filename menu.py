@@ -62,7 +62,7 @@ class Menu:
         g = input("Choose an option: ")
         if g == "1":
             for_boolean = False
-            for i in Interview.get_interviews_by_password(mentor.mentor_password):
+            for i in mentor.get_interviews_by_mentor_object():
                     for_boolean = True
                     print("\nInterview time: {0}\nApplication code: {1}\nApplicant: {2} {3}"
                           .format(i[0], i[1], i[2], i[3]))
