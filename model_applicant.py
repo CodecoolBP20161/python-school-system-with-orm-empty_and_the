@@ -10,21 +10,25 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
 
+    # Return the applicant as an object by application_code
     @classmethod
     def get_applicant_object_by_application_code(cls, appl_code):
         return cls.select().where(cls.application_code == appl_code).get()
 
+    # Return the list of the applicants, who haven't got application_code yet (list of objects)
     @classmethod
     def new_applicant(cls):
         object_list = list(cls.select().where(cls.application_code.is_null(True)))
         return object_list
 
+    # Save the application_code to the new_applicant from the object_list
     @classmethod
     def application_code_generator(cls, object_list):
         for element in object_list:
                 element.application_code = cls.get_free_application_code(object_list)
                 element.save()
 
+    # Get the closest school and save it to the new_applicant from the object_list
     @classmethod
     def get_closest_school(cls, object_list):
         for element in object_list:
@@ -32,6 +36,7 @@ class Applicant(BaseModel):
             element.status = "in progress"
             element.save()
 
+    # Create a unique application_code
     @staticmethod
     def get_free_application_code(object_list):
         while True:

@@ -4,8 +4,8 @@ from model_mentor import *
 
 class Interview(BaseModel):
     date_time = DateTimeField()
-    mentor_1 = ForeignKeyField(Mentor)
-    mentor_2 = ForeignKeyField(Mentor)
+    mentor_1 = ForeignKeyField(Mentor, related_name="mentor_1")
+    mentor_2 = ForeignKeyField(Mentor, related_name="mentor_2")
     applicant = ForeignKeyField(Applicant, related_name="interview")
 
     @classmethod
