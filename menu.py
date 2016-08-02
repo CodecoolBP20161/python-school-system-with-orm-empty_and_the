@@ -10,9 +10,10 @@ class Menu:
         print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
-            Applicant.get_closest_school()
+            object_list = Applicant.new_applicant()
+            Applicant.get_closest_school(object_list)
             print("System message: Closest school connected to the applicants.")
-            Applicant.application_code_generator()
+            Applicant.application_code_generator(object_list)
             print("System message: Application code generated for the applicants.")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
@@ -93,7 +94,7 @@ class Menu:
     def get_mentor_object(cls):
         try:
             user_input = int(input("Please enter your password: "))
-            if user_input > 99999 or user_input < 10000:
+            if user_input > 999999 or user_input < 100000:
                 raise ValueError
             mentor = Mentor.get_mentor_object_by_password(user_input)
             return mentor

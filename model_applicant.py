@@ -20,15 +20,13 @@ class Applicant(BaseModel):
         return object_list
 
     @classmethod
-    def application_code_generator(cls):
-        object_list = cls.new_applicant()
+    def application_code_generator(cls, object_list):
         for element in object_list:
                 element.application_code = cls.get_free_application_code(object_list)
                 element.save()
 
     @classmethod
-    def get_closest_school(cls):
-        object_list = cls.new_applicant()
+    def get_closest_school(cls, object_list):
         for element in object_list:
             element.school = element.city.school
             element.status = "in progress"
