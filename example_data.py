@@ -41,6 +41,8 @@ mikimentor = Mentor.create(first_name="Miklós", last_name="Beöthy", school=cla
 tomimentor = Mentor.create(first_name="Tamás", last_name="Tompa", school=class_budapest, mentor_password=333333)
 miskolcmentor = Mentor.create(first_name="Mihály", last_name="Miskolc", school=class_miskolc, mentor_password=444444)
 krakowmentor = Mentor.create(first_name="Károly", last_name="Krakow", school=class_krakow, mentor_password=555555)
+polandmentor = Mentor.create(first_name="Lewandowski", last_name="Robert", school=class_krakow, mentor_password=666666)
+polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=class_krakow, mentor_password=77777)
 
 # generate new applicants without application_code
 Applicant.create(first_name="Smith", last_name="John", city=city_varso)
@@ -100,7 +102,7 @@ answer1 = Answer.create(answer_text="4", question=question5)
 answer1 = Answer.create(answer_text="100", question=question6)
 
 # generate interviews
-Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor=mikimentor, applicant=antal)
-Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor=danimentor, applicant=maria)
-Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor=danimentor, applicant=ilona)
-Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor=krakowmentor, applicant=lajos)
+Interview.create(date_time=datetime(2016, 12, 6, 15, 10), mentor_1=mikimentor, mentor_2=danimentor, applicant=antal)
+Interview.create(date_time=datetime(2016, 8, 7, 13, 20), mentor_1=danimentor, mentor_2=tomimentor, applicant=maria)
+Interview.create(date_time=datetime(2016, 10, 5, 16, 40), mentor_1=krakowmentor, mentor_2=polandmentor, applicant=ilona)
+Interview.create(date_time=datetime(2016, 9, 4, 18, 50), mentor_1=polishmentor, mentor_2=krakowmentor, applicant=lajos)
