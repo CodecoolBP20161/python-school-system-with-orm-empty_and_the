@@ -4,8 +4,8 @@ from model_mentor import *
 
 class Interview(BaseModel):
     date_time = DateTimeField()
-    mentor_1 = ForeignKeyField(Mentor)
-    mentor_2 = ForeignKeyField(Mentor)
+    mentor_1 = ForeignKeyField(Mentor, related_name="mentor_1")
+    mentor_2 = ForeignKeyField(Mentor, related_name="mentor_2")
     applicant = ForeignKeyField(Applicant, related_name="interview")
 
     @classmethod
@@ -16,8 +16,10 @@ class Interview(BaseModel):
         return (
             interview_object.date_time,
             interview_object.applicant.school.name,
-            interview_object.mentor.first_name,
-            interview_object.mentor.last_name)
+            interview_object.mentor_1.first_name,
+            interview_object.mentor_1.last_name,
+            interview_object.mentor_2.first_name,
+            interview_object.mentor_2.last_name)
 
     @classmethod
     def get_interviews_by_password(cls, user_input):
