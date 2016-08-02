@@ -1,6 +1,7 @@
 from model_interview import *
 from model_answer import *
 from model_mentor import *
+from model_interview_slot import *
 
 
 class Menu:
@@ -14,6 +15,8 @@ class Menu:
             Applicant.get_closest_school(object_list)
             object_list = Applicant.new_applicant()
             print("System message: Closest school connected to the applicants.")
+            Interview_slot.get_interview_for_applicants(object_list)
+            print("System message: Interview time generated for the applicants.")
             Applicant.application_code_generator(object_list)
             print("System message: Application code generated for the applicants.")
             cls.administrator_submenu()
