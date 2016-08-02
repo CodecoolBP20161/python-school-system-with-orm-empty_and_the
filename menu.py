@@ -12,6 +12,7 @@ class Menu:
         if g == "1":
             object_list = Applicant.new_applicant()
             Applicant.get_closest_school(object_list)
+            object_list = Applicant.new_applicant()
             print("System message: Closest school connected to the applicants.")
             Applicant.application_code_generator(object_list)
             print("System message: Application code generated for the applicants.")
