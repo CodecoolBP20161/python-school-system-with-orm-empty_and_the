@@ -48,7 +48,7 @@ polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=cl
 Applicant.create(first_name="Smith", last_name="John", city=city_varso)
 Applicant.create(first_name="Smith", last_name="Jane", city=city_liszki)
 Applicant.create(first_name="Smith", last_name="Johnny", city=city_berlin)
-Applicant.create(first_name="Kovács", last_name="János", city=city_debrecen)
+Applicant.create(first_name="Kovács", last_name="János", city=city_kaposvar)
 Applicant.create(first_name="Molnár", last_name="László", city=city_debrecen)
 
 # generate applicants with given parameters for testing
