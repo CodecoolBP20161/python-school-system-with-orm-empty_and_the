@@ -18,6 +18,7 @@ class Menu:
             print("System message: E-mails about application details have been sent to the applicants.")
             InterviewSlot.get_interview_for_applicants()
             print("System message: Interview time generated for the applicants.")
+            print("System message: E-mails about interview details have been sent to the applicants.")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
             cls.main_menu()
