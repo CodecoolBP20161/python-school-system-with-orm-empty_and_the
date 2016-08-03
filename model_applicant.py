@@ -38,6 +38,7 @@ class Applicant(BaseModel):
         return object_list
 
     # Save the application_code for the new applicants
+    # and send an automatic email about the details of the application
     @classmethod
     def application_code_generator(cls):
         for element in cls.get_new_applicants_by_application_code():
