@@ -13,6 +13,7 @@ class Email:
         self.subject = subject
         self.body = body
 
+    # Create the body of the email
     def create_message(self):
         msg = MIMEMultipart()
         msg['From'] = self.fromaddr
@@ -21,6 +22,7 @@ class Email:
         msg.attach(MIMEText(self.body, 'plain'))
         return msg
 
+    # Send the email to the given email address
     def send_email(self):
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
