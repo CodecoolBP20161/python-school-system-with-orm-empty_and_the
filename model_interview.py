@@ -1,12 +1,15 @@
-from model_applicant import *
+from model_base import *
 from model_mentor import *
+from model_applicant import *
 
 
 class Interview(BaseModel):
     date_time = DateTimeField()
-    mentor = ForeignKeyField(Mentor)
+    mentor_1 = ForeignKeyField(Mentor, related_name="mentor_1")
+    mentor_2 = ForeignKeyField(Mentor, related_name="mentor_2")
     applicant = ForeignKeyField(Applicant, related_name="interview")
 
+    # Return the details of the interview for the applicant
     @classmethod
     def get_interview_details_by_application_code(cls, user_input):
         interview_object = cls.select(
@@ -15,15 +18,7 @@ class Interview(BaseModel):
         return (
             interview_object.date_time,
             interview_object.applicant.school.name,
-            interview_object.mentor.first_name,
-            interview_object.mentor.last_name)
-
-    @classmethod
-    def get_interviews_by_password(cls, user_input):
-        interviews = cls.select(
-            Mentor,
-            cls).join(Mentor).where(
-            Mentor.mentor_password == user_input)
-        for element in interviews:
-            yield (element.date_time,
-                   element.applicant.application_code, element.applicant.first_name, element.applicant.last_name)
+            interview_object.mentor_1.first_name,
+            interview_object.mentor_1.last_name,
+            interview_object.mentor_2.first_name,
+            interview_object.mentor_2.last_name)

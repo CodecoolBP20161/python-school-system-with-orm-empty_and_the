@@ -1,6 +1,7 @@
 from model_interview import *
 from model_answer import *
 from model_mentor import *
+from model_interview_slot import *
 
 
 class Menu:
@@ -10,10 +11,11 @@ class Menu:
         print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
-            object_list = Applicant.new_applicant()
-            Applicant.get_closest_school(object_list)
+            Applicant.get_closest_school()
             print("System message: Closest school connected to the applicants.")
-            Applicant.application_code_generator(object_list)
+            InterviewSlot.get_interview_for_applicants()
+            print("System message: Interview time generated for the applicants.")
+            Applicant.application_code_generator()
             print("System message: Application code generated for the applicants.")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
@@ -34,8 +36,8 @@ class Menu:
         elif g == "2":
             try:
                 details_list = Interview.get_interview_details_by_application_code(applicant.application_code)
-                print("\nInterview date and time: {0}\nSchool: {1}\nMentor: {2} {3}"
-                      .format(details_list[0], details_list[1], details_list[2], details_list[3]))
+                print("\nInterview date and time: {0}\nSchool: {1}\nMentors: {2} {3} and {4} {5}"
+                      .format(*details_list))
             except Interview.DoesNotExist:
                 print("\nNo interview registered for application code: {} in the database."
                       .format(applicant.application_code))
@@ -62,7 +64,7 @@ class Menu:
         g = input("Choose an option: ")
         if g == "1":
             for_boolean = False
-            for i in Interview.get_interviews_by_password(mentor.mentor_password):
+            for i in mentor.get_interviews_by_mentor_object():
                     for_boolean = True
                     print("\nInterview time: {0}\nApplication code: {1}\nApplicant: {2} {3}"
                           .format(i[0], i[1], i[2], i[3]))

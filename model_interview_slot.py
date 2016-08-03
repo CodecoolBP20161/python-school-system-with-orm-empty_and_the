@@ -1,0 +1,45 @@
+# Interview_slot table contains the mentor's free time for the interviews
+from model_mentor import *
+from model_applicant import *
+from model_interview import *
+
+
+class InterviewSlot(BaseModel):
+    start = DateTimeField()
+    end = DateTimeField()
+    reserved = BooleanField()
+    mentor = ForeignKeyField(Mentor, related_name="mentor")
+
+    # Return the list of the slots not reserved
+    @classmethod
+    def get_mentor_object_list_not_reserved(cls):
+        # used suppress warning(# noqa) because issue: https://github.com/coleifer/peewee/issues/612
+        interview_slot_object_list = list(cls.select().where(cls.reserved == False))  # noqa
+        return interview_slot_object_list
+
+    # Find two not reserved mentor in the applicant's school and save it for the applicant
+    @classmethod
+    def get_interview_for_applicants(cls):
+        object_list = Applicant.get_applicants_without_interview()
+        for i in object_list:
+            break_boolean = False
+            interview_slot_object_list = cls.get_mentor_object_list_not_reserved()
+            for j in interview_slot_object_list:
+                if break_boolean:
+                    break
+                elif j.mentor.school_id == i.school_id:
+                    for k in interview_slot_object_list:
+                        if k.mentor.id != j.mentor.id and k.start == j.start and k.mentor.school_id == i.school_id:
+                            j.reserved = True
+                            j.save()
+                            k.reserved = True
+                            k.save()
+                            i.has_interview = True
+                            i.save()
+                            Interview.create(
+                                date_time=j.start,
+                                mentor_1=j.mentor,
+                                mentor_2=k.mentor,
+                                applicant=i)
+                            break_boolean = True
+                            break
