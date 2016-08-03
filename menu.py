@@ -35,9 +35,9 @@ class Menu:
             cls.applicant_submenu(applicant)
         elif g == "2":
             try:
-                details_list = Interview.get_interview_details_by_application_code(applicant.application_code)
+                interview_details_list = Interview.get_interview_details_by_application_code(applicant.application_code)
                 print("\nInterview date and time: {0}\nSchool: {1}\nMentors: {2} {3} and {4} {5}"
-                      .format(*details_list))
+                      .format(*interview_details_list))
             except Interview.DoesNotExist:
                 print("\nNo interview registered for application code: {} in the database."
                       .format(applicant.application_code))
@@ -47,7 +47,7 @@ class Menu:
             for_boolean = False
             for i in Answer.get_answers_by_application_code(applicant.application_code):
                     for_boolean = True
-                    print("\nQuestion: {0}\nQuestion status: {1}\nAnswer: {2}".format(i[0], i[1], i[2]))
+                    print("\nQuestion: {0}\nQuestion status: {1}\nAnswer: {2}".format(*i))
             if for_boolean is False:
                 print("\nNo questions registered for application code: {} in the database."
                       .format(applicant.application_code))
