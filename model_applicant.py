@@ -10,6 +10,7 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
     has_interview = BooleanField(default=False)
+    email = CharField()
 
     # Return the applicant as an object by application_code
     @classmethod
