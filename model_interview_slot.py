@@ -4,7 +4,7 @@ from model_applicant import *
 from model_interview import *
 
 
-class Interview_Slot(BaseModel):
+class InterviewSlot(BaseModel):
     start = DateTimeField()
     end = DateTimeField()
     reserved = BooleanField()
@@ -17,7 +17,7 @@ class Interview_Slot(BaseModel):
         interview_slot_object_list = list(cls.select().where(cls.reserved == False))  # noqa
         return interview_slot_object_list
 
-    # Find two not reserved mentor in the applicant's school and return interview start, mentor_1, mentor_2
+    # Find two not reserved mentor in the applicant's school and save it for the applicant
     @classmethod
     def get_interview_for_applicants(cls):
         object_list = Applicant.get_applicants_without_interview()

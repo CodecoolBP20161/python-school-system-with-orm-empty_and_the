@@ -9,6 +9,7 @@ class Interview(BaseModel):
     mentor_2 = ForeignKeyField(Mentor, related_name="mentor_2")
     applicant = ForeignKeyField(Applicant, related_name="interview")
 
+    # Return the details of the interview for the applicant
     @classmethod
     def get_interview_details_by_application_code(cls, user_input):
         interview_object = cls.select(
