@@ -13,10 +13,11 @@ class Menu:
         if g == "1":
             Applicant.get_closest_school()
             print("System message: Closest school connected to the applicants.")
-            InterviewSlot.get_interview_for_applicants()
-            print("System message: Interview time generated for the applicants.")
             Applicant.application_code_generator()
             print("System message: Application code generated for the applicants.")
+            print("System message: E-mails about application details have been sent to the applicants.")
+            InterviewSlot.get_interview_for_applicants()
+            print("System message: Interview time generated for the applicants.")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
             cls.main_menu()
