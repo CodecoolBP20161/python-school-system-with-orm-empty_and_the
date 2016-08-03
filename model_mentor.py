@@ -7,6 +7,7 @@ class Mentor(BaseModel):
     last_name = CharField()
     school = ForeignKeyField(School, related_name="workplace")
     mentor_password = IntegerField()
+    email = CharField()
 
     # Return the details of the interviews related to the mentor
     def get_interviews_by_mentor_object(self):
