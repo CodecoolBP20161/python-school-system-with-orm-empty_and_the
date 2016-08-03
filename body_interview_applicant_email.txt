@@ -1,0 +1,11 @@
+Dear {0} {1}!
+
+In this email you find the information about your interview.
+Previously you were informed about the school you need to go.
+The date of the interview is {2}.
+You will meet with two mentors: {3} {4} and {5} {6}.
+Please feel free to answer this e-mail, if you have any questions.
+We are looking forward to seeing you.
+
+Cheers,
+Mentors of CodeCool
