@@ -1,6 +1,6 @@
-from model_applicant import *
+from model_base import *
 from model_mentor import *
-from model_school import *
+from model_applicant import *
 
 
 class Interview(BaseModel):
