@@ -1,5 +1,6 @@
 from model_city import *
 from random import randint
+from class_email import *
 
 
 class Applicant(BaseModel):
@@ -40,8 +41,14 @@ class Applicant(BaseModel):
     @classmethod
     def application_code_generator(cls):
         for element in cls.get_new_applicants_by_application_code():
-                element.application_code = cls.get_free_application_code()
-                element.save()
+            file = open("body_application_email.txt", "r")
+            body = file.read().format(element.first_name, element.last_name,
+                                      element.application_code, element.school.name)
+            file.close()
+            element.application_code = cls.get_free_application_code()
+            email_application = Email(element.email, "Application details", body)
+            email_application.send_email()
+            element.save()
 
     # Get the closest school and save it for the new applicants
     @classmethod
