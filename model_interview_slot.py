@@ -42,12 +42,30 @@ class InterviewSlot(BaseModel):
                                 mentor_1=j.mentor,
                                 mentor_2=k.mentor,
                                 applicant=i)
+
+                            # Connect Gmail server
+                            server = Email.connect_server()
+
+                            # Send email to the applicant about the interview
                             file = open("body_interview_applicant_email.txt", "r")
                             body = file.read().format(i.first_name, i.last_name, i.interview.get().date_time,
                                                       j.mentor.first_name, j.mentor.last_name,
                                                       k.mentor.first_name, k.mentor.last_name)
                             file.close()
                             email_application = Email(i.email, "Interview details", body)
-                            email_application.send_email()
+                            email_application.send_email(server)
+
+                            # Send email to the mentors about the inteview
+                            for mentor_obj in [j, k]:
+                                file = open("body_interview_mentor_email.txt", "r")
+                                body = file.read().format(mentor_obj.mentor.first_name, mentor_obj.mentor.last_name,
+                                                          i.interview.get().date_time, i.first_name, i.last_name)
+                                file.close()
+                                email_application = Email(i.email, "Interview details for mentor", body)
+                                email_application.send_email(server)
+
+                            # Disconnect Gmail server
+                            Email.disconnect_server(server)
+
                             break_boolean = True
                             break

@@ -37,17 +37,25 @@ city_varso = City.create(name="Varsó", school=class_krakow)
 city_berlin = City.create(name="Berlin", school=class_krakow)
 
 # generating e_mail list
-e = ["emptyandthe+{}@gmail.com".format(i) for i in range(1, 11)]
+e = ["emptyandthe+{}@gmail.com".format(i) for i in range(1, 19)]
 
 # generating mentors
-danimentor = Mentor.create(first_name="Dániel", last_name="Salamon", school=class_budapest, mentor_password=111111)
-mikimentor = Mentor.create(first_name="Miklós", last_name="Beöthy", school=class_budapest, mentor_password=222222)
-tomimentor = Mentor.create(first_name="Tamás", last_name="Tompa", school=class_budapest, mentor_password=333333)
-miskolcmentor_1 = Mentor.create(first_name="Mihály", last_name="Miskolc", school=class_miskolc, mentor_password=444444)
-miskolcmentor_2 = Mentor.create(first_name="Manfréd", last_name="Miskolc", school=class_miskolc, mentor_password=888888)
-krakowmentor = Mentor.create(first_name="Károly", last_name="Krakow", school=class_krakow, mentor_password=555555)
-polandmentor = Mentor.create(first_name="Lewandowski", last_name="Robert", school=class_krakow, mentor_password=666666)
-polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=class_krakow, mentor_password=77777)
+danimentor = Mentor.create(first_name="Dániel", last_name="Salamon", school=class_budapest,
+                           mentor_password=111111, email=e[10])
+mikimentor = Mentor.create(first_name="Miklós", last_name="Beöthy", school=class_budapest,
+                           mentor_password=222222, email=e[11])
+tomimentor = Mentor.create(first_name="Tamás", last_name="Tompa", school=class_budapest,
+                           mentor_password=333333, email=e[12])
+miskolcmentor_1 = Mentor.create(first_name="Mihály", last_name="Miskolc", school=class_miskolc,
+                                mentor_password=444444, email=e[13])
+miskolcmentor_2 = Mentor.create(first_name="Manfréd", last_name="Miskolc", school=class_miskolc,
+                                mentor_password=888888, email=e[14])
+krakowmentor = Mentor.create(first_name="Károly", last_name="Krakow", school=class_krakow,
+                             mentor_password=555555, email=e[15])
+polandmentor = Mentor.create(first_name="Lewandowski", last_name="Robert", school=class_krakow,
+                             mentor_password=666666, email=e[16])
+polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=class_krakow,
+                             mentor_password=77777, email=e[17])
 
 # generate new applicants without application_code
 Applicant.create(first_name="Smith", last_name="John", city=city_varso, email=e[0])
