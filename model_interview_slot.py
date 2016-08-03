@@ -17,7 +17,8 @@ class InterviewSlot(BaseModel):
         interview_slot_object_list = list(cls.select().where(cls.reserved == False))  # noqa
         return interview_slot_object_list
 
-    # Find two not reserved mentor in the applicant's school and save it for the applicant
+    # Find two not reserved mentor in the applicant's school, save it for the applicant
+    # and send an automatic email about the details of the interview
     @classmethod
     def get_interview_for_applicants(cls):
         object_list = Applicant.get_applicants_without_interview()
@@ -41,12 +42,5 @@ class InterviewSlot(BaseModel):
                                 mentor_1=j.mentor,
                                 mentor_2=k.mentor,
                                 applicant=i)
-                            file = open("body_interview_applicant_email.txt", "r")
-                            body = file.read().format(i.first_name, i.last_name, i.interview.get().date_time,
-                                                      j.mentor.first_name, j.mentor.last_name,
-                                                      k.mentor.first_name, k.mentor.last_name)
-                            file.close()
-                            email_application = Email(i.email, "Interview details", body)
-                            email_application.send_email()
                             break_boolean = True
                             break
