@@ -13,7 +13,7 @@ class Menu:
         if g == "1":
             Applicant.get_closest_school()
             print("System message: Closest school connected to the applicants.")
-            Interview_slot.get_interview_for_applicants()
+            Interview_Slot.get_interview_for_applicants()
             print("System message: Interview time generated for the applicants.")
             Applicant.application_code_generator()
             print("System message: Application code generated for the applicants.")
