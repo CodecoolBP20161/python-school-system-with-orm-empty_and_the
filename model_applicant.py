@@ -31,7 +31,7 @@ class Applicant(BaseModel):
     # Return the list of the applicants, who haven't got interview yet (list of objects)
     @classmethod
     def get_applicants_without_interview(cls):
-        # used subpress warning(# noqa) because issue: https://github.com/coleifer/peewee/issues/612
+        # used suppress warning(# noqa) because issue: https://github.com/coleifer/peewee/issues/612
         object_list = list(cls.select().where(cls.has_interview == False))  # noqa
         return object_list
 

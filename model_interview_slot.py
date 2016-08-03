@@ -13,7 +13,7 @@ class InterviewSlot(BaseModel):
     # Return the list of the slots not reserved
     @classmethod
     def get_mentor_object_list_not_reserved(cls):
-        # used subpress warning(# noqa) because issue: https://github.com/coleifer/peewee/issues/612
+        # used suppress warning(# noqa) because issue: https://github.com/coleifer/peewee/issues/612
         interview_slot_object_list = list(cls.select().where(cls.reserved == False))  # noqa
         return interview_slot_object_list
 
