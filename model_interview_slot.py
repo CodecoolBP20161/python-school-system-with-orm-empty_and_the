@@ -42,12 +42,30 @@ class InterviewSlot(BaseModel):
                                 mentor_1=j.mentor,
                                 mentor_2=k.mentor,
                                 applicant=i)
+
+                            # Send email to the applicant about the interview
                             file = open("body_interview_applicant_email.txt", "r")
                             body = file.read().format(i.first_name, i.last_name, i.interview.get().date_time,
                                                       j.mentor.first_name, j.mentor.last_name,
                                                       k.mentor.first_name, k.mentor.last_name)
                             file.close()
                             email_application = Email(i.email, "Interview details", body)
+                            email_application.send_email()
+
+                            # Send email to the mentor_1 about the inteview
+                            file = open("body_interview_mentor_email.txt", "r")
+                            body = file.read().format(j.mentor.first_name, j.mentor.last_name,
+                                                      i.interview.get().date_time, i.first_name, i.last_name)
+                            file.close()
+                            email_application = Email(i.email, "Interview details for mentor", body)
+                            email_application.send_email()
+
+                            # Send email to the mentor_2 about the inteview
+                            file = open("body_interview_mentor_email.txt", "r")
+                            body = file.read().format(k.mentor.first_name, k.mentor.last_name,
+                                                      i.interview.get().date_time, i.first_name, i.last_name)
+                            file.close()
+                            email_application = Email(i.email, "Interview details for mentor", body)
                             email_application.send_email()
                             break_boolean = True
                             break
