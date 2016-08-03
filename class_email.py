@@ -18,7 +18,7 @@ class Email:
         msg = MIMEMultipart()
         msg['From'] = self.fromaddr
         msg['To'] = self.toaddr
-        msg['Subject'] = "Details"
+        msg['Subject'] = self.subject
         msg.attach(MIMEText(self.body, 'plain'))
         return msg
 

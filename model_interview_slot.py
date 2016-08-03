@@ -41,5 +41,12 @@ class InterviewSlot(BaseModel):
                                 mentor_1=j.mentor,
                                 mentor_2=k.mentor,
                                 applicant=i)
+                            file = open("body_interview_applicant_email.txt", "r")
+                            body = file.read().format(i.first_name, i.last_name, i.interview.get().date_time,
+                                                      j.mentor.first_name, j.mentor.last_name,
+                                                      k.mentor.first_name, k.mentor.last_name)
+                            file.close()
+                            email_application = Email(i.email, "Interview details", body)
+                            email_application.send_email()
                             break_boolean = True
                             break
