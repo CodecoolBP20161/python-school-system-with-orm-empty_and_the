@@ -46,11 +46,11 @@ class Applicant(BaseModel):
         server = Email.connect_server()
 
         for element in cls.get_new_applicants_by_application_code():
+            element.application_code = cls.get_free_application_code()
             file = open("body_application_email.txt", "r")
             body = file.read().format(element.first_name, element.last_name,
                                       element.application_code, element.school.name)
             file.close()
-            element.application_code = cls.get_free_application_code()
             email_application = Email(element.email, "Application details", body)
             email_application.send_email(server)
             element.save()
