@@ -5,9 +5,7 @@ from model_applicant import *
 
 class Interview(BaseModel):
     date_time = DateTimeField()
-    mentor_1 = ForeignKeyField(Mentor, related_name="mentor_1")
-    mentor_2 = ForeignKeyField(Mentor, related_name="mentor_2")
-    applicant = ForeignKeyField(Applicant, related_name="interview")
+    applicant = ForeignKeyField(Applicant, related_name="applicantinterview")
 
     # Return the details of the interview for the applicant
     @classmethod
@@ -15,10 +13,8 @@ class Interview(BaseModel):
         interview_object = cls.select(
             Applicant, cls).join(Applicant).where(
             Applicant.application_code == user_input).get()
-        return (
-            interview_object.date_time,
-            interview_object.applicant.school.name,
-            interview_object.mentor_1.first_name,
-            interview_object.mentor_1.last_name,
-            interview_object.mentor_2.first_name,
-            interview_object.mentor_2.last_name)
+        yield interview_object.date_time
+        yield interview_object.applicant.school.name
+        for element in interview_object.interviews:
+            yield element.mentor.first_name
+            yield element.mentor.last_name

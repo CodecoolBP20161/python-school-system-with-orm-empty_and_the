@@ -11,14 +11,9 @@ class Mentor(BaseModel):
 
     # Return the details of the interviews related to the mentor
     def get_interviews_by_mentor_object(self):
-        interviews1 = self.mentor_1
-        interviews2 = self.mentor_2
-        for element in interviews1:
-            yield (element.date_time,
-                   element.applicant.application_code, element.applicant.first_name, element.applicant.last_name)
-        for element in interviews2:
-            yield (element.date_time,
-                   element.applicant.application_code, element.applicant.first_name, element.applicant.last_name)
+        for element in self.mentorinterview:
+            yield (element.interview.date_time, element.interview.applicant.application_code,
+                   element.interview.applicant.first_name, element.interview.applicant.last_name)
 
     # Return the mentor as an object by password
     @classmethod

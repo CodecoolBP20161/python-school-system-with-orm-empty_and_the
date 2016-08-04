@@ -2,6 +2,7 @@
 from model_mentor import *
 from model_applicant import *
 from model_interview import *
+from model_mentorinterview import *
 
 
 class InterviewSlot(BaseModel):
@@ -37,18 +38,16 @@ class InterviewSlot(BaseModel):
                             k.save()
                             i.has_interview = True
                             i.save()
-                            Interview.create(
-                                date_time=j.start,
-                                mentor_1=j.mentor,
-                                mentor_2=k.mentor,
-                                applicant=i)
+                            interview_object = Interview.create(date_time=j.start, applicant=i)
+                            MentorInterview.create(interview=interview_object, mentor=j.mentor)
+                            MentorInterview.create(interview=interview_object, mentor=k.mentor)
 
                             # Connect Gmail server
                             server = Email.connect_server()
 
                             # Send email to the applicant about the interview
                             file = open("body_interview_applicant_email.txt", "r")
-                            body = file.read().format(i.first_name, i.last_name, i.interview.get().date_time,
+                            body = file.read().format(i.first_name, i.last_name, i.applicantinterview.get().date_time,
                                                       j.mentor.first_name, j.mentor.last_name,
                                                       k.mentor.first_name, k.mentor.last_name)
                             file.close()
@@ -59,7 +58,8 @@ class InterviewSlot(BaseModel):
                             for mentor_obj in [j, k]:
                                 file = open("body_interview_mentor_email.txt", "r")
                                 body = file.read().format(mentor_obj.mentor.first_name, mentor_obj.mentor.last_name,
-                                                          i.interview.get().date_time, i.first_name, i.last_name)
+                                                          i.applicantinterview.get().date_time,
+                                                          i.first_name, i.last_name)
                                 file.close()
                                 email_application = Email(i.email, "Interview details for mentor", body)
                                 email_application.send_email(server)
