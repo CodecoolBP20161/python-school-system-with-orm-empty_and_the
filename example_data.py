@@ -72,12 +72,13 @@ ilona = Applicant.create(first_name="Szabó", last_name="Ilona", city=city_sopro
 lajos = Applicant.create(first_name="Tóth", last_name="Lajos", city=city_sopron, application_code=55555, email=e[9])
 
 # generate questions
-question1 = Question.create(question_text="2 + 2 = ?", question_status="answered", applicant=antal)
+question1 = Question.create(question_text="2 + 2 = ?", question_status="answered", applicant=antal, mentor=danimentor)
 question2 = Question.create(question_text="5 * 6 = ?", question_status="new", applicant=maria)
-question3 = Question.create(question_text="3 - 7 = ?", question_status="waiting for answer", applicant=maria)
+question3 = Question.create(question_text="3 - 7 = ?", question_status="waiting for answer", applicant=maria,
+                            mentor=mikimentor)
 question4 = Question.create(question_text="15 * 3 = ?", question_status="new", applicant=maria)
-question5 = Question.create(question_text="16 / 4 = ?", question_status="answered", applicant=ilona)
-question6 = Question.create(question_text="10 * 10 = ?", question_status="answered", applicant=lajos)
+question5 = Question.create(question_text="16 / 4 = ?", question_status="answered", applicant=ilona, mentor=tomimentor)
+question6 = Question.create(question_text="10 * 10 = ?", question_status="answered", applicant=lajos, mentor=tomimentor)
 
 # generate answers
 answer1 = Answer.create(answer_text="4", question=question1)
