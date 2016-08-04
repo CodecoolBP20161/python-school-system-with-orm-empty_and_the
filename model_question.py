@@ -13,7 +13,7 @@ class Question(BaseModel):
     # Answers a question based on the input of a mentor
     @classmethod
     def answer_question(cls, user_input, answer):
-        question_object = cls.select().where(cls.id=user_input).get()
+        question_object = cls.select().where(cls.id == user_input).get()
         Answer.create(answer_text=answer, question=question_object)
         question_object.status = "answered"
         question_object.save()
