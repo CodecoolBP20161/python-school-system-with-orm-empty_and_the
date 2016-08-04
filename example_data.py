@@ -58,18 +58,18 @@ polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=cl
                              mentor_password=77777, email=e[17])
 
 # generate new applicants without application_code
-Applicant.create(first_name="Smith", last_name="John", city=city_varso, email=e[0])
-Applicant.create(first_name="Smith", last_name="Jane", city=city_liszki, email=e[1])
-Applicant.create(first_name="Smith", last_name="Johnny", city=city_berlin, email=e[2])
-Applicant.create(first_name="Kovács", last_name="János", city=city_kaposvar, email=e[3])
-Applicant.create(first_name="Molnár", last_name="László", city=city_debrecen, email=e[4])
+Applicant.create(first_name="John", last_name="Smith", city=city_varso, email=e[0])
+Applicant.create(first_name="Jane", last_name="Smith", city=city_liszki, email=e[1])
+Applicant.create(first_name="Johhny", last_name="Smith", city=city_berlin, email=e[2])
+Applicant.create(first_name="János", last_name="Kovács", city=city_kaposvar, email=e[3])
+Applicant.create(first_name="László", last_name="Molnár", city=city_debrecen, email=e[4])
 
 # generate applicants with given parameters for testing
-antal = Applicant.create(first_name="Szűcs", last_name="Antal", city=city_gyor, application_code=11111, email=e[5])
-maria = Applicant.create(first_name="Kocsis", last_name="Mária", city=city_hatvan, application_code=22222, email=e[6])
+antal = Applicant.create(first_name="Antal", last_name="Szűcs", city=city_gyor, application_code=11111, email=e[5])
+maria = Applicant.create(first_name="Mária", last_name="Kocsis", city=city_hatvan, application_code=22222, email=e[6])
 python = Applicant.create(first_name="Monthy", last_name="Python", city=city_hatvan, application_code=33333, email=e[7])
-ilona = Applicant.create(first_name="Szabó", last_name="Ilona", city=city_sopron, application_code=44444, email=e[8])
-lajos = Applicant.create(first_name="Tóth", last_name="Lajos", city=city_sopron, application_code=55555, email=e[9])
+ilona = Applicant.create(first_name="Ilona", last_name="Szabó", city=city_sopron, application_code=44444, email=e[8])
+lajos = Applicant.create(first_name="Lajos", last_name="Tóth", city=city_sopron, application_code=55555, email=e[9])
 
 # generate questions
 question1 = Question.create(question_text="2 + 2 = ?", question_status="answered", applicant=antal)
