@@ -3,13 +3,15 @@ from model_answer import *
 from model_mentor import *
 from model_interview_slot import *
 from class_table import *
+from model_mentorinterview import *
 
 
 class Menu:
 
     @classmethod
     def administrator_submenu(cls):
-        print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\nX. Exit to Main menu\n")
+        print("\nAdministrator submenu\n--------------------------\n1. Handle new applications\n" +
+              "2. Show interviews\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             Applicant.get_closest_school()
@@ -21,6 +23,37 @@ class Menu:
             print("System message: Interview time generated for the applicants.")
             print("System message: E-mails about interview details have been sent to the applicants.")
             print("System message: E-mails about interview details have been sent to the mentors.")
+            cls.administrator_submenu()
+        elif g == "2":
+            print("\nFilters\n------------\n1. Mentor\n2. Date\n" +
+                  "3. Applicant\n4. School\n5. No filter\nX. Exit to Main menu\n")
+            filter_number = input("Chosse a filter:")
+            table = Table(list(MentorInterview.get_all_interviews()),
+                          ["Mentor", "Date", "Applicant", "School"])
+            if filter_number == "1":
+                filter_string = input("Mentor name:")
+                table = table.filter_table(filter_number, filter_string)
+                if table:
+                    print(table)
+            elif filter_number == "2":
+                filter_string = input("Date:")
+                table = table.filter_table(filter_number, filter_string)
+                if table:
+                    print(table)
+            elif filter_number == "3":
+                filter_string = input("Applicant name:")
+                table = table.filter_table(filter_number, filter_string)
+                if table:
+                    print(table)
+            elif filter_number == "4":
+                filter_string = input("School name:")
+                table = table.filter_table(filter_number, filter_string)
+                if table:
+                    print(table)
+            elif filter_number == "5":
+                print(table)
+            else:
+                print("Not a valid option!")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
             cls.main_menu()
