@@ -2,6 +2,7 @@ from model_interview import *
 from model_answer import *
 from model_mentor import *
 from model_interview_slot import *
+from class_table import *
 
 
 class Menu:
@@ -38,22 +39,22 @@ class Menu:
             cls.applicant_submenu(applicant)
         elif g == "2":
             try:
-                interview_details_list = Interview.get_interview_details_by_application_code(applicant.application_code)
+                details_list = list(Interview.get_interview_details_by_application_code(applicant.application_code))
                 print("\nInterview date and time: {0}\nSchool: {1}\nMentors: {2} {3} and {4} {5}"
-                      .format(*interview_details_list))
+                      .format(*details_list))
             except Interview.DoesNotExist:
                 print("\nNo interview registered for application code: {} in the database."
                       .format(applicant.application_code))
             cls.applicant_submenu(applicant)
         elif g == "3":
             print("\nApplication code: {0}".format(applicant.application_code))
-            for_boolean = False
-            for i in Answer.get_answers_by_application_code(applicant.application_code):
-                    for_boolean = True
-                    print("\nQuestion: {0}\nQuestion status: {1}\nAnswer: {2}".format(*i))
-            if for_boolean is False:
+            if not list(Answer.get_answers_by_application_code(applicant.application_code)):
                 print("\nNo questions registered for application code: {} in the database."
                       .format(applicant.application_code))
+            else:
+                table = Table(list(Answer.get_answers_by_application_code(applicant.application_code)),
+                              ["Question", "Question status", "Answer"])
+                print(table)
             cls.applicant_submenu(applicant)
         elif g == "X" or g == "x":
             cls.main_menu()
@@ -66,13 +67,12 @@ class Menu:
         print("\nMentor submenu\n--------------------------\n1. Interviews\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
-            for_boolean = False
-            for i in mentor.get_interviews_by_mentor_object():
-                    for_boolean = True
-                    print("\nInterview time: {0}\nApplication code: {1}\nApplicant: {2} {3}"
-                          .format(i[0], i[1], i[2], i[3]))
-            if for_boolean is False:
+            if not list(mentor.get_interviews_by_mentor_object()):
                 print("\nNo interviews registered for this mentor in the database.")
+            else:
+                table = Table(list(mentor.get_interviews_by_mentor_object()),
+                              ["Date and time", "Application code", "First name", "Last name"])
+                print(table)
             cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             cls.main_menu()
