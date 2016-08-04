@@ -72,17 +72,17 @@ ilona = Applicant.create(first_name="Ilona", last_name="Szabó", city=city_sopro
 lajos = Applicant.create(first_name="Lajos", last_name="Tóth", city=city_sopron, application_code=55555, email=e[9])
 
 # generate questions
-question1 = Question.create(question_text="2 + 2 = ?", question_status="answered", applicant=antal, mentor=danimentor,
+question1 = Question.create(question_text="2 + 2 = ?", question_status="waiting for answer", applicant=antal, mentor=danimentor,
                             date_time=datetime(2016, 10, 7, 15, 10))
-question2 = Question.create(question_text="5 * 6 = ?", question_status="new", applicant=maria,
+question2 = Question.create(question_text="5 * 6 = ?", question_status="waiting for answer", applicant=maria,
                             date_time=datetime(2016, 9, 6, 13, 10))
 question3 = Question.create(question_text="3 - 7 = ?", question_status="waiting for answer", applicant=maria,
                             mentor=mikimentor, date_time=datetime(2016, 9, 12, 14, 10))
 question4 = Question.create(question_text="15 * 3 = ?", question_status="new", applicant=maria,
                             date_time=datetime(2016, 9, 17, 16, 10))
-question5 = Question.create(question_text="16 / 4 = ?", question_status="answered", applicant=ilona, mentor=tomimentor,
+question5 = Question.create(question_text="16 / 4 = ?", question_status="waiting for answer", applicant=ilona, mentor=tomimentor,
                             date_time=datetime(2016, 10, 10, 13, 10))
-question6 = Question.create(question_text="10 * 10 = ?", question_status="answered", applicant=lajos, mentor=tomimentor,
+question6 = Question.create(question_text="10 * 10 = ?", question_status="waiting for answer", applicant=lajos, mentor=tomimentor,
                             date_time=datetime(2016, 9, 2, 13, 10))
 
 # generate answers

@@ -65,7 +65,7 @@ class Menu:
     @classmethod
     def mentor_submenu(cls, mentor):
         print("\nMentor submenu\n--------------------------")
-        print("\n1. Interviews\n2. Questions\nX. Exit to Main menu\n")
+        print("\n1. Interviews\n2. Questions\n3. Answer question\nX. Exit to Main menu\n")
         g = input("Choose an option: ")
         if g == "1":
             if not list(mentor.get_interviews_by_mentor_object()):
@@ -82,6 +82,14 @@ class Menu:
                 table = Table(list(mentor.get_question_data_for_mentor()),
                               ["Question ID", "Date and time", "Application code", "Question"])
                 print(table)
+            cls.mentor_submenu(mentor)
+        if g == "3":
+            question = input("\nWhich question do you want to answer? ")
+            answer = input("\nWhat is your answer? ")
+            try:
+                Answer.answer_question(question, answer, mentor.id)
+            except:
+                print("Wrong question number!")
             cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             cls.main_menu()
