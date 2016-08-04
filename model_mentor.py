@@ -9,7 +9,13 @@ class Mentor(BaseModel):
     mentor_password = IntegerField()
     email = CharField()
 
-    # Return the details of the interviews related to the mentor
+    # Yield question details for a mentor object
+    def get_question_data_for_mentor(self):
+        for element in self.mentor_question:
+            if element.question_status == "waiting for answer":
+                yield (element.id, element.date_time, element.applicant.application_code, element.question_text)
+
+    # Yield the details of the interviews related to the mentor
     def get_interviews_by_mentor_object(self):
         for element in self.mentorinterview:
             yield (element.interview.date_time, element.interview.applicant.application_code,
