@@ -74,8 +74,6 @@ class Menu:
                 table = Table(list(mentor.get_interviews_by_mentor_object()),
                               ["Date and time", "Application code", "First name", "Last name"])
                 print(table)
-<<<<<<< HEAD
-=======
             cls.mentor_submenu(mentor)
         if g == "2":
             if not list(mentor.get_question_data_for_mentor()):
@@ -92,7 +90,6 @@ class Menu:
                 Answer.answer_question(question, answer, mentor.id)
             except:
                 print("Wrong question number!")
->>>>>>> user_story_10
             cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             cls.main_menu()
