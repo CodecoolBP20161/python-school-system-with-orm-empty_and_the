@@ -39,9 +39,9 @@ class Menu:
             cls.applicant_submenu(applicant)
         elif g == "2":
             try:
-                interview_details_list = Interview.get_interview_details_by_application_code(applicant.application_code)
+                details_list = list(Interview.get_interview_details_by_application_code(applicant.application_code))
                 print("\nInterview date and time: {0}\nSchool: {1}\nMentors: {2} {3} and {4} {5}"
-                      .format(*interview_details_list))
+                      .format(*details_list))
             except Interview.DoesNotExist:
                 print("\nNo interview registered for application code: {} in the database."
                       .format(applicant.application_code))
