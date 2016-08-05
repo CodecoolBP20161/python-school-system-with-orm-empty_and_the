@@ -113,47 +113,39 @@ class Menu:
             cls.mentor_submenu(mentor)
 
     @classmethod
-    def get_applicant_object(cls):
-        try:
-            user_input = int(input("Please, enter an Application code: "))
-            if user_input > 99999 or user_input < 10000:
-                raise ValueError
-            applicant = Applicant.get_applicant_object_by_application_code(user_input)
-            return applicant
-        except ValueError:
-            print("This is not a valid Application code, try again!")
-            cls.main_menu()
-        except Applicant.DoesNotExist:
-            print("This Application code is not in the database!")
-            cls.main_menu()
-
-    @classmethod
-    def get_mentor_object(cls):
-        try:
-            user_input = int(input("Please enter your password: "))
-            if user_input > 999999 or user_input < 100000:
-                raise ValueError
-            mentor = Mentor.get_mentor_object_by_password(user_input)
-            return mentor
-        except ValueError:
-            print("This is not a valid password, try again!")
-            cls.main_menu()
-        except Mentor.DoesNotExist:
-            print("This Mentor is not in the database!")
-            cls.main_menu()
-
-    @classmethod
     def main_menu(cls):
         print("\nMain Menu\n----------------\n1. Administrator\n2. Applicant\n3. Mentor\nX. Exit")
         g = input("Choose a user: ")
         if g == "1":
             cls.administrator_submenu()
         elif g == "2":
-            applicant = cls.get_applicant_object()
-            cls.applicant_submenu(applicant)
+            try:
+                user_input = int(input("Please, enter an Application code: "))
+                if user_input > 99999 or user_input < 10000:
+                    raise ValueError
+                applicant = Applicant.get_applicant_object_by_application_code(user_input)
+            except ValueError:
+                print("This is not a valid Application code, try again!")
+                cls.main_menu()
+            except Applicant.DoesNotExist:
+                print("This Application code is not in the database!")
+                cls.main_menu()
+            else:
+                cls.applicant_submenu(applicant)
         elif g == "3":
-            mentor = cls.get_mentor_object()
-            cls.mentor_submenu(mentor)
+            try:
+                user_input = int(input("Please enter your password: "))
+                if user_input > 999999 or user_input < 100000:
+                    raise ValueError
+                mentor = Mentor.get_mentor_object_by_password(user_input)
+            except ValueError:
+                print("This is not a valid password, try again!")
+                cls.main_menu()
+            except Mentor.DoesNotExist:
+                print("This Mentor is not in the database!")
+                cls.main_menu()
+            else:
+                cls.mentor_submenu(mentor)
         elif g == "X" or g == "x":
             exit()
         else:
