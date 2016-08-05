@@ -7,6 +7,7 @@ class Table:
         self.table = Table.change_table_data_to_str(table)
         self.title_list = title_list
 
+    # printing tables
     def __str__(self):
         self.table.insert(0, self.title_list)
 
@@ -28,6 +29,7 @@ class Table:
 
         return '\n'.join(self.table)
 
+    # get's a lists in list table and returns the same table but with all of data converted to string
     @staticmethod
     def change_table_data_to_str(table):
         for index, item in enumerate(table):
