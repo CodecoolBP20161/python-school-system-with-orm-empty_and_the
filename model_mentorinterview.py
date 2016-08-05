@@ -25,7 +25,8 @@ class MentorInterview(BaseModel):
                 yield element.return_neccessary_data()
         elif filter_number == "3":
             filter_string = input("Applicant name:")
-            for element in cls.select().join(Interview).join(Applicant).where(Applicant.first_name.concat(" ").concat(Applicant.last_name) == filter_string):
+            for element in cls.select().join(Interview).join(Applicant).where(
+                    Applicant.first_name.concat(" ").concat(Applicant.last_name) == filter_string):
                 yield element.return_neccessary_data()
         elif filter_number == "4":
             filter_string = input("School name:")
