@@ -28,32 +28,12 @@ class Menu:
             print("\nFilters\n------------\n1. Mentor\n2. Date\n" +
                   "3. Applicant\n4. School\n5. No filter\nX. Exit to Main menu\n")
             filter_number = input("Chosse a filter:")
-            table = Table(list(MentorInterview.get_all_interviews()),
+            table = Table(list(MentorInterview.get_interview_by_filter(filter_number)),
                           ["Mentor", "Date", "Applicant", "School"])
-            if filter_number == "1":
-                filter_string = input("Mentor name:")
-                table = table.filter_table(filter_number, filter_string)
-                if table:
-                    print(table)
-            elif filter_number == "2":
-                filter_string = input("Date:")
-                table = table.filter_table(filter_number, filter_string)
-                if table:
-                    print(table)
-            elif filter_number == "3":
-                filter_string = input("Applicant name:")
-                table = table.filter_table(filter_number, filter_string)
-                if table:
-                    print(table)
-            elif filter_number == "4":
-                filter_string = input("School name:")
-                table = table.filter_table(filter_number, filter_string)
-                if table:
-                    print(table)
-            elif filter_number == "5":
+            if table.table:
                 print(table)
             else:
-                print("Not a valid option!")
+                print("This information can't be found in the database!")
             cls.administrator_submenu()
         elif g == "X" or g == "x":
             cls.main_menu()

@@ -28,18 +28,6 @@ class Table:
 
         return '\n'.join(self.table)
 
-    def filter_table(self, filter_number, filter_string):
-        new_table = []
-        for element in self.table:
-            if element[int(filter_number)-1] == filter_string:
-                new_table.append(element)
-        if new_table:
-            self.table = new_table
-            return self
-        else:
-            print("Can't be found in the database!")
-            return False
-
     @staticmethod
     def change_table_data_to_str(table):
         for index, item in enumerate(table):
