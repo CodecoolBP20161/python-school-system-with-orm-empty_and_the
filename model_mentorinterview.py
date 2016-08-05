@@ -16,8 +16,8 @@ class MentorInterview(BaseModel):
     def get_interview_by_filter(cls, filter_number):
         if filter_number == "1":
             filter_string = input("Mentor name:")
-            for element in cls.select().join(Mentor).where(Mentor.first_name.concat(" ").concat(Mentor.last_name) ==
-                                                           filter_string):
+            for element in cls.select().join(Mentor).where(Mentor.first_name.concat(" ").concat(Mentor.last_name).
+                                                           contains(filter_string)):
                 yield element.return_neccessary_data()
         elif filter_number == "2":
             filter_string = input("Date:")
@@ -26,11 +26,11 @@ class MentorInterview(BaseModel):
         elif filter_number == "3":
             filter_string = input("Applicant name:")
             for element in cls.select().join(Interview).join(Applicant).where(
-                    Applicant.first_name.concat(" ").concat(Applicant.last_name) == filter_string):
+                    Applicant.first_name.concat(" ").concat(Applicant.last_name).contains(filter_string)):
                 yield element.return_neccessary_data()
         elif filter_number == "4":
             filter_string = input("School name:")
-            for element in cls.select().join(Mentor).join(School).where(School.name == filter_string):
+            for element in cls.select().join(Mentor).join(School).where(School.name.contains(filter_string)):
                 yield element.return_neccessary_data()
         elif filter_number == "5":
             for element in cls.select():
