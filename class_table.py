@@ -25,6 +25,7 @@ class Table:
                     row_list2 = list(self.table[k])
                     row_list2[i] = "|"
                     self.table[k] = "".join(row_list2)
+
         return '\n'.join(self.table)
 
     @staticmethod
