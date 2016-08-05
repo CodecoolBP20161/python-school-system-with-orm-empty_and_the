@@ -25,16 +25,18 @@ class Menu:
             print("System message: E-mails about interview details have been sent to the mentors.")
             cls.administrator_submenu()
         elif g == "2":
-            print("\nFilters\n------------\n1. Mentor\n2. Date\n" +
-                  "3. Applicant\n4. School\n5. No filter\nX. Exit to Main menu\n")
-            filter_number = input("Chosse a filter:")
-            table = Table(list(MentorInterview.get_interview_by_filter(filter_number)),
-                          ["Mentor", "Date", "Applicant", "School"])
-            if table.table:
-                print(table)
-            else:
-                print("This information can't be found in the database!")
-            cls.administrator_submenu()
+            while True:
+                print("\nFilters\n------------\n1. Mentor\n2. Date\n" +
+                      "3. Applicant\n4. School\n5. No filter\nX. Exit to Administrator submenu\n")
+                filter_number = input("Choose a filter:")
+                table = Table(list(MentorInterview.get_interview_by_filter(filter_number)),
+                              ["Mentor", "Date", "Applicant", "School"])
+                if filter_number == "x" or filter_number == "X":
+                    cls.administrator_submenu()
+                elif table.table:
+                    print(table)
+                else:
+                    print("This information can't be found in the database!")
         elif g == "X" or g == "x":
             cls.main_menu()
         else:
