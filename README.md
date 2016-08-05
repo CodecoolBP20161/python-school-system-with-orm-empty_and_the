@@ -1,5 +1,14 @@
-# python-school-system-with-orm-empty_and_the
-python-school-system-with-orm-empty_and_the created by GitHub Classroom
+# Python School System with orm
+## Represented by the empty_and_the
 
-Change dbname and dbuser in model_base.py!
-Run test.py to create new data then main.py(other files will add unnecessary data to the tables)!
+
+
+
+Before running the program first time please change 'dbname' and 'dbuser' in model_base.py!
+
+After that run example_data.py to create new data.
+
+Then you can run the program with main.py.
+
+If you have any problem feel free to send an email
+(emptyandthe@gmail.com) about it. Thanks.
