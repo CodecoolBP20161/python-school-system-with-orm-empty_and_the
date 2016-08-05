@@ -7,11 +7,13 @@ class MentorInterview(BaseModel):
     mentor = ForeignKeyField(Mentor, related_name="mentorinterview")
     interview = ForeignKeyField(Interview, related_name="interviews")
 
+    # Yields neccessary information
     def return_neccessary_data(self):
         return (self.mentor.first_name + ' ' + self.mentor.last_name, self.interview.date_time,
                 self.interview.applicant.first_name + ' ' + self.interview.applicant.last_name,
                 self.interview.applicant.school.name)
 
+    # yield objects from tables by filters
     @classmethod
     def get_interview_by_filter(cls, filter_number):
         if filter_number == "1":
