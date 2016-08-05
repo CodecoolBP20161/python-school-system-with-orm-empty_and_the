@@ -1,0 +1,10 @@
+Dear {0} {1},
+
+I inform you about a new assigned interview.
+The date and time of the interview: {2}.
+The name of the applicant: {3} {4}.
+
+Please confirm you recieved this email.
+
+Have a nice day!
+Administrators
