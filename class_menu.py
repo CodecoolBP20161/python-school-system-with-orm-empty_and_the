@@ -4,6 +4,7 @@ from model_mentor import *
 from model_interview_slot import *
 from class_table import *
 from model_mentorinterview import *
+import os
 
 
 class Menu:
@@ -151,3 +152,7 @@ class Menu:
         else:
             print("Not a valid option!")
             cls.main_menu()
+
+    @staticmethod
+    def clear():
+        os.system('cls' if os.name == 'nt' else 'clear')
