@@ -85,11 +85,6 @@ question5 = Question.create(question_text="16 / 4 = ?", question_status="waiting
 question6 = Question.create(question_text="10 * 10 = ?", question_status="waiting for answer",
                             applicant=lajos, mentor=tomimentor, date_time=datetime(2016, 9, 2, 13, 10))
 
-# generate answers
-answer1 = Answer.create(answer_text="4", question=question1)
-answer1 = Answer.create(answer_text="4", question=question5)
-answer1 = Answer.create(answer_text="100", question=question6)
-
 
 # generate interview slots
 InterviewSlot.create(
