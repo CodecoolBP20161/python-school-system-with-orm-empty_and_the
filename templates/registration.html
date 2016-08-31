@@ -1,18 +1,35 @@
-<form action="action_page.php">
-  <fieldset>
-    <legend>Applicant informations:</legend>
-    First name:<br>
-    <input type = "text" name= "firstname"><br>
-    Last name:<br>
-    <input type="text" name="lastname"><br><br>
-    E-mail adress:<br>
-    <input type="text" name="email"><br><br>
-    City:<br>
-    <select name="city" >
-     {% for status in city_list %}
-     <option value={{ city }}>{{ city }}</option>
-     {% endfor %}
-  </select>
-    <input type="submit" value="Submit">
-  </fieldset>
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Registration</title>
+</head>
+
+<body>
+<form method='POST'>
+<fieldset>
+
+<legend>Applicant informations:</legend>
+
+First name:<br>
+<input type = "text" name= "first_name"><br>
+
+Last name:<br>
+<input type="text" name="last_name"><br><br>
+
+E-mail adress:<br>
+<input type="text" name="email"><br><br>
+
+City:<br>
+<select name="city" >
+{% for city in city_list %}
+<option value={{ city }}>{{ city }}</option>
+{% endfor %}
+</select>
+
+<input type="submit" value="Submit">
+
+</fieldset>
 </form>
+</body>
+</html>
