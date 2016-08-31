@@ -1,0 +1,18 @@
+<form action="action_page.php">
+  <fieldset>
+    <legend>Applicant informations:</legend>
+    First name:<br>
+    <input type = "text" name= "firstname"><br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+    E-mail adress:<br>
+    <input type="text" name="email"><br><br>
+    City:<br>
+    <select name="city" >
+     {% for status in city_list %}
+     <option value={{ city }}>{{ city }}</option>
+     {% endfor %}
+  </select>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
