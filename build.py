@@ -9,8 +9,9 @@ from model_answer import *
 from model_mentor import *
 from model_interview_slot import *
 from model_mentorinterview import *
+from model_user import *
 
 db.connect()
 # List the tables here what you want to create...
-db.drop_tables([Applicant, City, School, Interview, Question, Answer, Mentor, InterviewSlot, MentorInterview], safe=True, cascade=True)
-db.create_tables([Applicant, City, School, Interview, Question, Answer, Mentor, InterviewSlot, MentorInterview], safe=True)
+db.drop_tables([Applicant, City, School, Interview, Question, Answer, Mentor, InterviewSlot, MentorInterview, User], safe=True, cascade=True)
+db.create_tables([Applicant, City, School, Interview, Question, Answer, Mentor, InterviewSlot, MentorInterview, User], safe=True)
