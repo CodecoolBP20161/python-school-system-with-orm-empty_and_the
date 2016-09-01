@@ -28,4 +28,11 @@ def registration():
 def succesfull():
     return render_template("succesfull.html")
 
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template("login.html")
+    if request.method == 'POST':
+        return render_template("login.html")
 app.run(debug=True)
