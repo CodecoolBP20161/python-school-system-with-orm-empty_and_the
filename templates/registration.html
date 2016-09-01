@@ -17,19 +17,31 @@ First name:<br>
 Last name:<br>
 <input type="text" name="last_name" value={{ form_data["last_name"] }}><br><br>
 
-E-mail adress:<br>
-<input type="text" name="email" value={{ form_data["email"] }}><br><br>
+E-mail address:<br>
+<input type="email" name="email" value={{ form_data["email"] }}><br><br>
 
 City:<br>
+{% if form_data["city"] != "nocity" and form_data["city"] %}
 <select name="city" >
-{% for city in city_list %}
-<option value={{ city }}>{{ city }}</option>
+<option value={{ form_data["city"] }}>{{ form_data["city"] }}</option>
+{% for element in city_list %}
+<option value={{ element.name }}>{{ element.name }}</option>
 {% endfor %}
 </select>
+{% else %}
+<select name="city" >
+<option value=nocity>Choose a city!</option>
+{% for element in city_list %}
+<option value={{ element.name }}>{{ element.name }}</option>
+{% endfor %}
+</select>
+{% endif %}
 
 <input type="submit" value="Submit">
-
-</fieldset>
+</fieldset><br>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}
 </form>
 </body>
 </html>
