@@ -139,3 +139,7 @@ InterviewSlot.create(
     start=datetime(
         2016, 5, 6, 13, 10), end=datetime(
             2016, 9, 5, 14, 10), reserved=False, mentor=tomimentor)
+
+# generate users
+User.create(username="aaaaa", password="bbbbb")
+User.create(username="ccccc", password="ddddd")
