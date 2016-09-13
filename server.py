@@ -1,6 +1,7 @@
 from flask import *
 from model_applicant import *
 from model_city import *
+from model_user import *
 
 app = Flask(__name__)
 app.config.update(dict(SECRET_KEY='development key'))
@@ -34,5 +35,19 @@ def login():
     if request.method == 'GET':
         return render_template("login.html")
     if request.method == 'POST':
-        return render_template("login.html")
+        if User.select().where(User.username == request.form["username"]):
+            return redirect(url_for('admin', login=True))
+        else:
+            return render_template("login.html")
+            flash("Invalid username or password!")
+
+
+@app.route('/admin', methods=['GET'])
+@app.route('/admin/<userid>', methods=['GET'])
+def admin(userid='', login=False):
+    if login:
+        return render_template("succesfull.html")
+    else:
+        return redirect(url_for('login'))
+
 app.run(debug=True)

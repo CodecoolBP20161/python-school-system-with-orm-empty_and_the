@@ -17,5 +17,8 @@
     <button type="submit">Login</button>
   </div>
 </form>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}
 </body>
 </html>
