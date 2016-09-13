@@ -4,11 +4,13 @@
 
 
 
-Before running the program first time please change 'dbname' and 'dbuser' in model_base.py!
+1. Please change 'dbname' and 'dbuser' in model_base.py!
 
-After that run example_data.py to create new data.
+2. Run example_data.py to create new data.
 
-Then you can run the program with main.py.
+3. Start the server with server.py.
+
+Now you can visit the website: http://localhost:5000
 
 If you have any problem feel free to send an email
 (emptyandthe@gmail.com) about it. Thanks.
