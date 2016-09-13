@@ -24,7 +24,7 @@ City:<br>
 <select name="city" required>
 <option value="">Choose a city!</option>
 {% for element in city_list %}
-<option value={{ element.name }}>{{ element.name }}</option>
+<option value={{ element.id }}>{{ element.name }}</option>
 {% endfor %}
 </select>
 

@@ -29,11 +29,8 @@ def registration():
     if request.method == 'GET':
         return render_template("registration.html", city_list=city_list, form_data=request.form)
     elif request.method == 'POST':
-        columns = ["first_name", "last_name", "city", "email"]
-        a = [request.form[element] for element in columns]
-        city = City.select().where(City.name == a[2])
-        applicant = Applicant(first_name=a[0], last_name=a[1], city=city, email=a[3])
-        applicant.save()
+        form_dict = dict((element, request.form[element]) for element in request.form)
+        Applicant.create(**form_dict)
         flash("Application succesfull!")
         return redirect(url_for('home'))
 
