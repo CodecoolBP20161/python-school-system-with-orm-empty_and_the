@@ -34,7 +34,7 @@ h5 {
 
 .navbar-fixed-bottom {
     text-align: center;
-    height: 30px;
+    height: 40px;
     background-color: #070808;
     color: white;
 }
@@ -52,14 +52,17 @@ h5 {
 }
 
 .fullscreenvideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-left: -85px;
-    width: 113%;
-    height: 113%;
-    opacity: 1;
-    margin-top: -70px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
 }
 
 .navbutton {
