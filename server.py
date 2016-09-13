@@ -1,6 +1,7 @@
 from flask import *
 from model_applicant import *
 from model_city import *
+from model_interview_slot import *
 
 app = Flask(__name__)
 app.config.update(dict(SECRET_KEY='development key'))
@@ -30,7 +31,10 @@ def registration():
         return render_template("registration.html", city_list=city_list, form_data=request.form)
     elif request.method == 'POST':
         form_dict = dict((element, request.form[element]) for element in request.form)
-        Applicant.create(**form_dict)
+        applicant = Applicant.create(**form_dict)
+        applicant.get_school()
+        applicant.code_generator()
+        InterviewSlot.get_interview_for_applicant(applicant)
         flash("Application succesfull!")
         return redirect(url_for('home'))
 
