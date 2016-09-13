@@ -12,30 +12,21 @@
 <legend>Applicant informations:</legend>
 
 First name:<br>
-<input type = "text" name= "first_name" value={{ form_data["first_name"] }}><br>
+<input type = "text" name= "first_name" value="{{ form_data["first_name"] }}" required><br>
 
 Last name:<br>
-<input type="text" name="last_name" value={{ form_data["last_name"] }}><br><br>
+<input type="text" name="last_name" value="{{ form_data["last_name"] }}" required><br><br>
 
 E-mail address:<br>
-<input type="email" name="email" value={{ form_data["email"] }}><br><br>
+<input type="email" name="email" value="{{ form_data["email"] }}" required><br><br>
 
 City:<br>
-{% if form_data["city"] != "nocity" and form_data["city"] %}
-<select name="city" >
-<option value={{ form_data["city"] }}>{{ form_data["city"] }}</option>
+<select name="city" required>
+<option value="">Choose a city!</option>
 {% for element in city_list %}
-<option value={{ element.name }}>{{ element.name }}</option>
+<option value={{ element.id }}>{{ element.name }}</option>
 {% endfor %}
 </select>
-{% else %}
-<select name="city" >
-<option value=nocity>Choose a city!</option>
-{% for element in city_list %}
-<option value={{ element.name }}>{{ element.name }}</option>
-{% endfor %}
-</select>
-{% endif %}
 
 <input type="submit" value="Submit">
 </fieldset><br>
