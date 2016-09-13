@@ -37,16 +37,16 @@ def registration():
     if request.method == 'GET':
         return render_template("registration.html", city_list=city_list)
     elif request.method == 'POST':
-        if request.form['email'] in [Applicant.select(Applicant.email)]:
-            flash("The e-mail address you specified is already in use.")
-            return redirect(url_for('registration'))
-        else:
-            form_dict = dict((element, request.form[element]) for element in request.form)
-            applicant = Applicant.create(**form_dict)
-            applicant.get_school()
-            applicant.code_generator()
-            InterviewSlot.get_interview_for_applicant(applicant)
-            flash("Application succesfull!")
-            return redirect(url_for('home'))
+        for element in Applicant.select(Applicant.email):
+            if request.form['email'] == element.email:
+                flash("The e-mail address you specified is already in use.")
+                return redirect(url_for('registration'))
+        form_dict = dict((element, request.form[element]) for element in request.form)
+        applicant = Applicant.create(**form_dict)
+        applicant.get_school()
+        applicant.code_generator()
+        InterviewSlot.get_interview_for_applicant(applicant)
+        flash("Application succesfull!")
+        return redirect(url_for('home'))
 
 app.run(debug=True)
