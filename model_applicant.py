@@ -13,6 +13,23 @@ class Applicant(BaseModel):
     has_interview = BooleanField(default=False)
     email = CharField()
 
+    # Get the closest school and save it for the new applicant(from webpage registration)
+    def get_school(self):
+        self.school = self.city.school
+        self.status = "in progress"
+        self.save()
+
+    # Get application code and save it for the new applicant and sends email(from webpage registration)
+    def code_generator(self):
+        self.application_code = Applicant.get_free_application_code()
+        self.save()
+        file = open("body_application_email.txt", "r")
+        body = file.read().format(self.first_name, self.last_name,
+                                  self.application_code, self.school.name)
+        file.close()
+        email_application = Email(self.email, "Application details", body)
+        email_application.connect_and_send_email()
+
     # Return the applicant as an object by application_code
     @classmethod
     def get_applicant_object_by_application_code(cls, appl_code):
