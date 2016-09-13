@@ -31,14 +31,11 @@ def registration():
     elif request.method == 'POST':
         columns = ["first_name", "last_name", "city", "email"]
         a = [request.form[element] for element in columns]
-        if all(a) and request.form["city"] != "nocity":
-            city = City.select().where(City.name == a[2])
-            applicant = Applicant(first_name=a[0], last_name=a[1], city=city, email=a[3])
-            applicant.save()
-            return redirect(url_for('succesfull'))
-        else:
-            flash("Please do not leave unanswered question boxes or blanks!")
-            return render_template("registration.html", city_list=city_list, form_data=request.form)
+        city = City.select().where(City.name == a[2])
+        applicant = Applicant(first_name=a[0], last_name=a[1], city=city, email=a[3])
+        applicant.save()
+        flash("Application succesfull!")
+        return redirect(url_for('succesfull'))
 
 
 @app.route('/registration/succesfull')
