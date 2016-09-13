@@ -6,6 +6,17 @@ app = Flask(__name__)
 app.config.update(dict(SECRET_KEY='development key'))
 
 
+@app.route('/', methods=['GET'])
+def root():
+    return redirect(url_for('home'))
+
+
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    if request.method == "GET":
+        return render_template("root.html")
+
+
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
     city_list = City.select()
