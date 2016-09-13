@@ -11,10 +11,16 @@ def root():
     return redirect(url_for('home'))
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET'])
 def home():
     if request.method == "GET":
         return render_template("root.html")
+
+
+@app.route('/applicant/login', methods=['GET'])
+def login():
+    if request.method == "GET":
+        return "login page under construction"
 
 
 @app.route('/registration', methods=['GET', 'POST'])
