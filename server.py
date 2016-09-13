@@ -35,11 +35,6 @@ def registration():
         applicant = Applicant(first_name=a[0], last_name=a[1], city=city, email=a[3])
         applicant.save()
         flash("Application succesfull!")
-        return redirect(url_for('succesfull'))
-
-
-@app.route('/registration/succesfull')
-def succesfull():
-    return render_template("succesfull.html")
+        return redirect(url_for('home'))
 
 app.run(debug=True)
