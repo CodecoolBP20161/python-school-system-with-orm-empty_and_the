@@ -11,7 +11,7 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
     has_interview = BooleanField(default=False)
-    email = CharField()
+    email = CharField(unique=True)
 
     # Get the closest school and save it for the new applicant(from webpage registration)
     def get_school(self):
