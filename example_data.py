@@ -57,12 +57,6 @@ polandmentor = Mentor.create(first_name="Lewandowski", last_name="Robert", schoo
 polishmentor = Mentor.create(first_name="Jackson", last_name="Polish", school=class_krakow,
                              mentor_password=77777, email=e[17])
 
-# generate new applicants without application_code
-Applicant.create(first_name="John", last_name="Smith", city=city_varso, email=e[0])
-Applicant.create(first_name="Jane", last_name="Smith", city=city_liszki, email=e[1])
-Applicant.create(first_name="Johhny", last_name="Smith", city=city_berlin, email=e[2])
-Applicant.create(first_name="János", last_name="Kovács", city=city_kaposvar, email=e[3])
-Applicant.create(first_name="László", last_name="Molnár", city=city_debrecen, email=e[4])
 
 # generate applicants with given parameters for testing
 antal = Applicant.create(first_name="Antal", last_name="Szűcs", city=city_gyor, application_code=11111, email=e[5])
