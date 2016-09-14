@@ -2,37 +2,69 @@
 <html>
 
 <head>
-<title>Registration</title>
+
+    <title>Registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/root.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-<form method='POST'>
-<fieldset>
+    <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+    <div class="container-fluid text-right navbutton">
+        <a href="{{ url_for("login") }}"><button type="button" class="btn btn-primary">Log In</button></a>
+        <a href="{{ url_for("registration") }}"><button type="button" class="btn btn-primary" >Sign Up</button></a>
+    </div>
 
-<legend>Applicant informations:</legend>
+    <div class="fullscreen ">
+        <video playsinline autoplay muted loop class="fullscreenvideo videohue">
+            <source src="/static/video/Notebook - 117.mp4" type="video/mp4">
+        </video>
+    </div>
 
-First name:<br>
-<input type = "text" name= "first_name" required><br>
+    <div class="container-fluid navbar"></div>
 
-Last name:<br>
-<input type="text" name="last_name" required><br><br>
+    <div class="container-fluid ">
+        <form method='POST'>
+        <label for="firstname">First Name</label>
+        <div class="col-xs-5">
+            <input name='firstname' type="text" class="form-control" id="firstname" placeholder="First name" required>
+        </div>
+        <br><br><br><br>
+        <div class="space"></div>
+        <div class="col-xs-5">
+            <label for="lastname">Last Name</label>
+            <input name='lastname' type="text" class="form-control" id="lastname" placeholder="Last name" required>
+        </div>
+        <br><br><br><br>
+        <div class="col-xs-5">
+            <label for="email">Email</label>
+            <input name='email' type="text" class="form-control" id="email" placeholder="Email" required>
+        </div>
+        <br><br><br><br>
+        <div class="col-xs-5">
+          <label for="sel1">City</label>
+          <select class="form-control" name="city" id="sel1" cols="10" placeholder="Choose a city" required>
+            <option value=''>Choose a city</option>
+            {% for element in city_list %}
+            <option value={{ element.id }}>{{ element.name }}</option>
+            {% endfor %}
+        </select>
 
-E-mail address:<br>
-<input type="email" name="email" required><br><br>
+            <input type="submit" value="Submit">
+                {% for message in get_flashed_messages() %}
+                <div class=flash>{{ message }}</div>
+            {% endfor %}
+        </form>
+    </div>
 
-City:<br>
-<select name="city" required>
-<option value="">Choose a city!</option>
-{% for element in city_list %}
-<option value={{ element.id }}>{{ element.name }}</option>
-{% endfor %}
-</select>
-
-<input type="submit" value="Submit">
-</fieldset><br>
-{% for message in get_flashed_messages() %}
-  <div class=flash>{{ message }}</div>
-{% endfor %}
-</form>
+    <div class="footer navbar-fixed-bottom">
+        <p class= "navbartext">© 2016 | Empty and the All rights reserved</p>
+    </div>
 </body>
 </html>
