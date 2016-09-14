@@ -124,7 +124,7 @@ h5 {
     background: none;
     border-color: white;
     border-radius: 25px;
-    border-width: 1px;
+    border-width: 2px;
 }
 
 .btn:hover {
@@ -135,7 +135,7 @@ h5 {
     background: none;
     border-color: red;
     border-radius: 25px;
-    border-width: 1px;
+    border-width: 2px;
 }
 
 .login {
