@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/root.css">
+    <link rel="stylesheet" href="static/css/reg.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -17,9 +17,6 @@
 <body>
     <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
     <div class="container-fluid text-right navbutton">
-        <a href="{{ url_for("login") }}"><button type="button" class="btn btn-primary">Log In</button></a>
-        <a href="{{ url_for("registration") }}"><button type="button" class="btn btn-primary" >Sign Up</button></a>
-    </div>
 
     <div class="fullscreen ">
         <video playsinline autoplay muted loop class="fullscreenvideo videohue">
@@ -27,41 +24,48 @@
         </video>
     </div>
 
+    <div>
+        <button type="button" class="btn">Sign Up</button>
+    </div>
     <div class="container-fluid navbar"></div>
 
-    <div class="container-fluid ">
+    <div class="container-fluid text-center box">
         <form method='POST'>
-        <label for="firstname">First Name</label>
-        <div class="col-xs-5">
-            <input name='firstname' type="text" class="form-control" id="firstname" placeholder="First name" required>
-        </div>
-        <br><br><br><br>
-        <div class="space"></div>
-        <div class="col-xs-5">
-            <label for="lastname">Last Name</label>
-            <input name='lastname' type="text" class="form-control" id="lastname" placeholder="Last name" required>
-        </div>
-        <br><br><br><br>
-        <div class="col-xs-5">
-            <label for="email">Email</label>
-            <input name='email' type="text" class="form-control" id="email" placeholder="Email" required>
-        </div>
-        <br><br><br><br>
-        <div class="col-xs-5">
-          <label for="sel1">City</label>
-          <select class="form-control" name="city" id="sel1" cols="10" placeholder="Choose a city" required>
-            <option value=''>Choose a city</option>
-            {% for element in city_list %}
-            <option value={{ element.id }}>{{ element.name }}</option>
-            {% endfor %}
-        </select>
+          <div class="form-group col-sm-8">
+            <label for="exampleInputEmail1"></label>
+            <span class="input-group-addon">First name</span>
+            <input type="text" name= "first_name" class="form-control" placeholder="firstname" required>
+          </div>
 
-            <input type="submit" value="Submit">
+          <div class="form-group col-sm-8">
+            <label for="exampleInputEmail1">Last name</label>
+            <input type="text" name= "last_name" class="form-control" placeholder="lastname" required>
+          </div>
+          <div class="form-group col-sm-8">
+            <label for="exampleInputEmail1">E-mail address</label>
+            <input type="email" name= "last_name" class="form-control" placeholder="email" required>
+          </div>
+          <div class="col-sm-8">
+            <label for="sel1">City</label>
+            <select class="form-control" name="city" cols="10" placeholder="Choose a city!" required>
+                <option value="">Choose a city!</option>
+                    {% for element in city_list %}
+                    <option value={{ element.id }}>{{ element.name }}</option>
+                    {% endfor %}
+            </select>
+          </div>
+            <div class="col-sm-8">
+                <label for="submit"></label>
+                <button value="Submit" type="submit" class="form-control submitbtn" required>Save</button>
                 {% for message in get_flashed_messages() %}
-                <div class=flash>{{ message }}</div>
-            {% endfor %}
+                    <div class=flash>{{ message }}</div>
+                {% endfor %}
+            </div>
         </form>
     </div>
+
+
+
 
     <div class="footer navbar-fixed-bottom">
         <p class= "navbartext">© 2016 | Empty and the All rights reserved</p>
