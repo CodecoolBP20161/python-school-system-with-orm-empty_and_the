@@ -106,7 +106,6 @@ h5 {
     border-width: thin;
     border-color: white;
     padding: 28px;
-
 }
 
 #logo {
@@ -124,7 +123,7 @@ h5 {
     background: none;
     border-color: white;
     border-radius: 25px;
-    border-width: 1px;
+    border-width: 2px;
 }
 
 .btn:hover {
@@ -135,9 +134,27 @@ h5 {
     background: none;
     border-color: red;
     border-radius: 25px;
-    border-width: 1px;
+    border-width: 2px;
 }
 
 .login {
     margin-top: 0;
+}
+
+.alert{
+    margin-top: 10px;
+    margin-left: auto ;
+    margin-right: auto ;
+    width: 500px;
+}
+
+#fb {
+    border-radius: 70px;
+    width: 40px;
+    height: 40px;
+}
+
+#appl_name {
+    color: white;
+    font-size: 20px;
 }

@@ -29,7 +29,7 @@ def home():
         if querry:
             applicant = querry.get()
             if str(applicant.application_code) == request.form["code"]:
-                return "OK"
+                return render_template("root.html", applicant=applicant)
             else:
                 flash("Invalid Application code! Please try again!")
                 return render_template("root.html", warning="code")
