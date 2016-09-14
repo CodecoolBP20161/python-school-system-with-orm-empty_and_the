@@ -1,14 +1,34 @@
 .navbar {
-    position: relative;
-    height: 75px;
-    margin-top: -70px;
-    margin-left: -50px;
+
     width: auto;
+    height: 75px;
     background-color: rgba(225, 225, 225, 0.1);
     border: 0;
     border-radius: 0;
     box-shadow: 0px 0px 10px #000000;
-    z-index: -5;
+    z-index: 0;
+}
+
+.navbutton {
+    margin-top: 10px;
+    margin: 10px;
+}
+
+#logo {
+    padding-top: 17px;
+    padding-left: 15px;
+    position: fixed;
+
+}
+
+h1 {
+    color: white;
+    font-size: 54px;
+}
+
+label {
+    font-family: helvetica;
+    font-size: 16px;
 }
 
 .fullscreen {
@@ -61,19 +81,29 @@
     border-color: #D4363C;
 }
 
+.footer {
+    position: fixed;
+}
+
 .navbar-fixed-bottom {
+    position: fixed;
     text-align: center;
     height: 40px;
-    background-color: #0c0c0c;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
+}
+
+.navbartext {
+    margin-top: 10px;
 }
 
 .box {
     /*background-color: rgba(255, 255, 255, 0.2);*/
     background: white;
     border-radius: 4px;
-    width: 550px;
     height: 400px;
+    width: 400px;
+
     border-style: solid;
     border-width: thin;
     border-color: white;
