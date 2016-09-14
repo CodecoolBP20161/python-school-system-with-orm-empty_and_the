@@ -20,8 +20,10 @@ body {
 
 .navbar {
     position: relative;
-    height: 65px;
-    margin-top: -64px;
+    height: 75px;
+    margin-top: -70px;
+    margin-left: -50px;
+    width: auto;
     background-color: rgba(225, 225, 225, 0.1);
     border: 0;
     border-radius: 0;
@@ -95,7 +97,7 @@ h5 {
 }
 
 .navbutton {
-    margin-top: 20px;
+    margin-top: 10px;
     margin: 10px;
 }
 
@@ -112,7 +114,7 @@ h5 {
 }
 
 #logo {
-    padding-top: -5px;
+    padding-top: 7px;
     padding-left: 15px;
     position: fixed;
 
@@ -133,4 +135,8 @@ h5 {
     background: #D4363C;
     color: white;
     border: none;
+}
+
+.login {
+    margin-top: 0;
 }
