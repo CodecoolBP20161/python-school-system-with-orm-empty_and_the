@@ -8,14 +8,17 @@
 <body>
 <form method='POST'>
   <div class="container">
-    <label><b>Username</b></label><br>
-    <input type="text" placeholder="Enter Username" name="username" required><br><br>
+    <label><b>Email</b></label><br>
+    <input type="email" placeholder="Enter Username" name="email" required><br><br>
 
-    <label><b>Password</b></label><br>
-    <input type="password" placeholder="Enter Password" name="password" required><br><br>
+    <label><b>Application code</b></label><br>
+    <input type="password" placeholder="Enter Password" name="code" required><br><br>
 
     <button type="submit">Login</button>
   </div>
 </form>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}
 </body>
 </html>
