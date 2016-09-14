@@ -22,7 +22,6 @@ body {
     position: relative;
     height: 75px;
     margin-top: -70px;
-    margin-left: -50px;
     width: auto;
     background-color: rgba(225, 225, 225, 0.1);
     border: 0;
@@ -62,7 +61,7 @@ h5 {
 .navbar-fixed-bottom {
     text-align: center;
     height: 40px;
-    background-color: #0c0c0c;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
 
@@ -132,9 +131,14 @@ h5 {
 }
 
 .btn:hover {
-    background: #D4363C;
+    position: static;
+    margin-top: 5px;
+    margin-left: 12px;
     color: white;
-    border: none;
+    background: none;
+    border-color: red;
+    border-radius: 25px;
+    border-width: 1px;
 }
 
 .login {
