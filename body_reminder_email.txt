@@ -1,0 +1,10 @@
+Dear {0} {1}!
+
+You asked for a reminder of your application code.
+Your application code: {2}
+Warning!
+Please keep your application code safe, because it is your unique password.
+You will be informed about your personal interview soon.
+
+Cheers,
+Mentors of CodeCool
