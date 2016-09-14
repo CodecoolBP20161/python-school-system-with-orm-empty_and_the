@@ -18,12 +18,14 @@
     <!-- <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand"><img src="/static/img/logo@2x.png" id="logo"></a>
+              <a class="navbar-brand"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
             </div>
           <ul class="nav navbar-nav navbar-right">
           </ul>
         </div>
     </nav> -->
+    <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+
     <div class="container-fluid text-right navbutton">
         <a href="{{ url_for("login") }}"><button type="button" class="btn btn-primary">Log In</button></a>
         <a href="{{ url_for("registration") }}"><button type="button" class="btn btn-primary">Sign Up</button></a>
@@ -35,20 +37,27 @@
         </video>
     </div>
 
+    <div class="container-fluid navbar"></div>
+
     <div class="container-fluid text-center box">
-        <h1>School System</h1>
-        <h5>Edison bulb butcher next level VHS cardigan. Farm-to-table cronut affogato succulents,
-            subway tile kinfolk cold-pressed tousled 8-bit. Microdosing fixie tousled yr post-ironic vice.
-            Paleo plaid wolf helvetica heirloom jianbing.</h5>
+        <h1 class="classname">CODECOOL SCHOOL SYSTEM</h1>
+        <h5 class="stextbox">Edison bulb butcher next level VHS cardigan. Farm-to-table cronut affogato succulents,
+            subway tile kinfolk cold-pressed tousled 8-bit fa butcher next level VHS.</h5>
     </div>
 
     <div class="footer navbar-fixed-bottom">
-        <p>Empty and the © 2016</p>
+        <p class= "navbartext">© 2016 | Empty and the All rights reserved</p>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Successful!</strong>{{ message }}
+        </div>
+    {% endfor %}
 </body>
 
 </html>
