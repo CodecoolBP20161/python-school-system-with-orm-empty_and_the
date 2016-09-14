@@ -154,3 +154,8 @@ h5 {
     width: 40px;
     height: 40px;
 }
+
+#appl_name {
+    color: white;
+    font-size: 20px;
+}

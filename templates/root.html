@@ -16,6 +16,13 @@
 
     <div class="navbar">
        <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+       {% if applicant %}
+       <div class="form-group container-fluid text-right navbutton">
+           <span id="appl_name">{{ applicant.first_name }}, {{ applicant.last_name }}</span>
+           <a href="{{ url_for("home") }}"><button type="button" class="btn btn-primary">Log out</button></a>
+           <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb.png" id="fb"></a>
+       </div>
+       {% else %}
        <div>
            <form method="POST" class="form-inline container-fluid text-right navbutton">
              <div class="form-group">
@@ -31,6 +38,7 @@
              <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb.png" id="fb"></a>
            </form>
        </div>
+       {% endif %}
    </div>
 
     <div class="fullscreen ">
