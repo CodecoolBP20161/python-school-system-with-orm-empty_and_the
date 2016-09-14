@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'font1'; /*a name to be used later*/
+    src: url('/static/font/BebasNeue.otf'); /*URL to font*/
+}
+
+.classname {
+    font-family: 'font1';
+}
+
 body {
     /*background-color: rgba(0, 142, 157, 1);*/
 }
@@ -10,33 +19,53 @@ body {
 }
 
 .navbar {
-    background-color: white;
+    position: relative;
+    height: 65px;
+    margin-top: -64px;
+    background-color: rgba(225, 225, 225, 0.1);
     border: 0;
     border-radius: 0;
     box-shadow: 0px 0px 10px #000000;
+    z-index: -5;
 }
 
 h1 {
-    font-size: 64px;
+    font-size: 72px;
     color: white;
-    font-family: arial;
-    font-weight: 700;
+    text-shadow: 1px 1px 3px #000000;
 
 }
 
 h5 {
     color: #ffffff;
+    line-height: 140%;
+    font-family: arial;
+}
+
+.stextbox {
+    width: 590px;
+    height: 55px;
+    background-color: rgba(0, 146, 215, 0);
+    text-align: center;
+    border-radius: 5px;
+
+    padding: 10px;
+    z-index: -1;
 }
 
 .text-center {
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 .navbar-fixed-bottom {
     text-align: center;
     height: 40px;
-    background-color: #070808;
+    background-color: #0c0c0c;
     color: white;
+}
+
+.navbartext {
+    margin-top: 10px;
 }
 
 .fullscreen {
@@ -66,26 +95,33 @@ h5 {
 }
 
 .navbutton {
-    margin-top: 10px;
+    margin-top: 20px;
     margin: 10px;
 }
 
 .box {
     /*background-color: rgba(255, 255, 255, 0.2);*/
-    border-radius: 5px;
-    width: 500px;
-    height: 180px;
+    border-radius: 4px;
+    width: 650px;
+    height: 250px;
     border-style: solid;
     border-width: thin;
     border-color: white;
+    padding: 28px;
 
 }
 
 #logo {
-    margin-top: 10px;
+    padding-top: -5px;
+    padding-left: 15px;
+    position: fixed;
+
 }
 
 .btn {
+    position: static;
+    margin-top: 5px;
+    margin-left: 12px;
     color: white;
     background: none;
     border-color: white;
