@@ -25,10 +25,22 @@ def home():
         return render_template("root.html")
 
 
-@app.route('/applicant/login', methods=['GET'])
+@app.route('/applicant/login', methods=['GET', 'POST'])
 def login():
     if request.method == "GET":
-        return "login page under construction"
+        return render_template("login.html")
+    if request.method == "POST":
+        querry = Applicant.select().where(Applicant.email == request.form["email"])
+        if querry:
+            applicant = querry.get()
+            if applicant.application_code == int(request.form["code"]):
+                return redirect(url_for('home', login=True))
+            else:
+                flash("Invalid Application code! Please try again!")
+                return render_template("login.html")
+        else:
+            flash("This e-mail address is not registered!")
+            return render_template("login.html")
 
 
 @app.route('/registration', methods=['GET', 'POST'])
