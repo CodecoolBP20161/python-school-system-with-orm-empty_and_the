@@ -107,7 +107,6 @@ h5 {
     border-width: thin;
     border-color: white;
     padding: 28px;
-
 }
 
 #logo {
@@ -141,4 +140,17 @@ h5 {
 
 .login {
     margin-top: 0;
+}
+
+.alert{
+    margin-top: 10px;
+    margin-left: auto ;
+    margin-right: auto ;
+    width: 500px;
+}
+
+#fb {
+    border-radius: 70px;
+    width: 3%;
+    height: 3%;
 }
