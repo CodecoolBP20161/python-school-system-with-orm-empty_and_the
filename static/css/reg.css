@@ -1,14 +1,23 @@
 .navbar {
-    position: relative;
-    height: 75px;
-    margin-top: -70px;
-    margin-left: -50px;
+    
     width: auto;
     background-color: rgba(225, 225, 225, 0.1);
     border: 0;
     border-radius: 0;
     box-shadow: 0px 0px 10px #000000;
-    z-index: -5;
+    z-index: 0;
+}
+
+.navbutton {
+    margin-top: 10px;
+    margin: 10px;
+}
+
+#logo {
+    padding-top: 17px;
+    padding-left: 15px;
+    position: fixed;
+
 }
 
 h1 {
