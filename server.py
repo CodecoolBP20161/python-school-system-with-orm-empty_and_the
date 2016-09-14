@@ -16,31 +16,42 @@ def close_connection(exception):
 
 @app.route('/', methods=['GET'])
 def root():
-    return redirect(url_for('home'))
+    if request.method == "GET":
+        return redirect(url_for('home'))
 
 
-@app.route('/home', methods=['GET'])
+@app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == "GET":
         return render_template("root.html")
-
-
-@app.route('/applicant/login', methods=['GET', 'POST'])
-def login():
-    if request.method == "GET":
-        return render_template("login.html")
     if request.method == "POST":
         querry = Applicant.select().where(Applicant.email == request.form["email"])
         if querry:
             applicant = querry.get()
-            if applicant.application_code == int(request.form["code"]):
-                return redirect(url_for('home', login=True))
+            if str(applicant.application_code) == request.form["code"]:
+                return "OK"
             else:
                 flash("Invalid Application code! Please try again!")
-                return render_template("login.html")
+                return render_template("root.html", warning="code")
         else:
             flash("This e-mail address is not registered!")
-            return render_template("login.html")
+            return render_template("root.html", warning="email")
+
+
+@app.route('/forget', methods=['GET', 'POST'])
+def forget():
+    if request.method == "GET":
+        return render_template("forget.html")
+    if request.method == "POST":
+        querry = Applicant.select().where(Applicant.email == request.form["email"])
+        if querry:
+            applicant = querry.get()
+            applicant.send_code_reminder()
+            flash("E-mail reminder about application has been sent!")
+            return redirect(url_for('home'))
+        else:
+            flash("This e-mail address is not registered!")
+            return render_template("forget.html", warning="email")
 
 
 @app.route('/registration', methods=['GET', 'POST'])
