@@ -30,6 +30,15 @@ class Applicant(BaseModel):
         email_application = Email(self.email, "Application details", body)
         email_application.connect_and_send_email()
 
+    # Send reminder about applicant's application code
+    def send_code_reminder(self):
+        file = open("body_reminder_email.txt", "r")
+        body = file.read().format(self.first_name, self.last_name,
+                                  self.application_code)
+        file.close()
+        email_application = Email(self.email, "Reminder", body)
+        email_application.connect_and_send_email()
+
     # Return the applicant as an object by application_code
     @classmethod
     def get_applicant_object_by_application_code(cls, appl_code):
