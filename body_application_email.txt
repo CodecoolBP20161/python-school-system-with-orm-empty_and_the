@@ -3,9 +3,10 @@ Dear {0} {1}!
 I'm glad to inform you that your application has been registered by our system!
 Your application code: {2}
 You has been assigned to: {3}
+You can now log in to our website.
+Warning!
+Please keep your application code safe, because it is your unique password.
 You will be informed about your personal interview soon.
-Please feel free to answer this e-mail, if you have any questions.
-We are looking forward to seeing you.
 
 Cheers,
 Mentors of CodeCool
