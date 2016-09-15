@@ -17,8 +17,12 @@
 <body>
 
     <div class="navbar">
-        <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+        <a href="{{ url_for("home") }}"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+        <div method="GET" class="container-fluid text-right navbutton">
+            <a href="{{ url_for("home") }}"><button type="button" class="btn btn-default">Back</button></a>
+        </div>
     </div>
+
 
     <div class="fullscreen ">
         <video playsinline autoplay muted loop class="fullscreenvideo videohue">

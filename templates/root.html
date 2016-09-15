@@ -15,12 +15,12 @@
 <body>
 
     <div class="navbar">
-       <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+       <a href="{{ url_for("home") }}"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
        {% if applicant %}
        <div class="form-group container-fluid text-right navbutton">
-           <span id="appl_name">{{ applicant.first_name }}, {{ applicant.last_name }}</span>
-           <a href="{{ url_for("home") }}"><button type="button" class="btn btn-primary">Log out</button></a>
-           <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb.png" id="fb"></a>
+           <span id="appl_name">Hello, {{ applicant.first_name }} {{ applicant.last_name }}!</span>
+           <a href="{{ url_for("home") }}"><button type="button" class="btn btn-primary">Log Out</button></a>
+           <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb2.png" id="fb"></a>
        </div>
        {% else %}
        <div>
@@ -35,7 +35,9 @@
              </div>
              <button type="submit" class="btn btn-default">Log In</button>
              <a href="{{ url_for("registration") }}"><button type="button" class="btn btn-primary">Sign Up</button></a>
-             <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb.png" id="fb"></a>
+             <a href="https://www.facebook.com/CodecoolOfficial/?fref=ts"><img src="/static/img/fb2.png" id="fb"></a>
+
+
            </form>
        </div>
        {% endif %}
@@ -63,12 +65,12 @@
     {% for message in get_flashed_messages() %}
         {% if not warning %}
         <div class="alert alert-info">
-            <strong>Successful!</strong>{{ message }}
+            <strong>Successful! </strong>{{ message }}
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         </div>
         {% else %}
         <div class="alert alert-warning" role="alert">
-            <strong>Warning!</strong>{{ message }}
+            <strong>Warning! </strong>{{ message }}
             {% if warning == 'code' %}
             <a href="{{ url_for("forget") }}" class="alert-link" data-dismiss="alert" aria-label="close">I forgot my application code!</a>
             {% elif warning == 'email' %}
