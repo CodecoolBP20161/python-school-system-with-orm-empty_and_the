@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'font1'; /*a name to be used later*/
+    src: url('/static/font/BebasNeue.otf'); /*URL to font*/
+}
+
+.classname {
+    font-family: 'font1';
+}
+
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.navbar {
+    color: white;
+    font-size: 18px;
+    height: 75px;
+    width: auto;
+    background-color: rgba(225, 225, 225, 0.1);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0px 0px 10px #000000;
+    z-index: 0;
+}
+
+h1 {
+    font-size: 72px;
+    color: white;
+    text-shadow: 1px 1px 3px #000000;
+
+}
+
+h5 {
+    color: #ffffff;
+    line-height: 140%;
+    font-family: arial;
+}
+
+.stextbox {
+    width: 590px;
+    height: 55px;
+    background-color: rgba(0, 146, 215, 0);
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: -1;
+}
+
+.text-center {
+    margin-top: 150px;
+}
+
+.navbar-fixed-bottom {
+    text-align: center;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.navbartext {
+    margin-top: 10px;
+}
+
+.fullscreen {
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+
+}
+
+.fullscreenvideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+.navbutton {
+    margin-top: 10px;
+    margin: 10px;
+}
+
+.box {
+    /*background-color: rgba(255, 255, 255, 0.2);*/
+    border-radius: 4px;
+    width: 650px;
+    height: 250px;
+    border-style: solid;
+    border-width: thin;
+    border-color: white;
+    padding: 28px;
+
+}
+
+#logo {
+    padding-top: 17px;
+    padding-left: 15px;
+    position: fixed;
+
+}
+
+#fb {
+    height: 38px;
+    width: 38px;
+}
+
+.btn {
+    position: static;
+    margin-top: 3px;
+    margin-left: 12px;
+    color: white;
+    background: none;
+    border-color: white;
+    border-radius: 25px;
+    border-width: 2px;
+}
+
+.btn:hover {
+    position: static;
+    margin-top: 3px;
+    margin-left: 12px;
+    color: white;
+    background: none;
+    border-color: red;
+    border-radius: 25px;
+    border-width: 2px;
+}
+
+.login {
+    margin-top: 0;
+}
+
+.alert{
+    margin-top: 10px;
+    margin-left: auto ;
+    margin-right: auto ;
+    width: 500px;
+}
+
+#appl_name {
+    color: white;
+    font-size: 20px;
+}

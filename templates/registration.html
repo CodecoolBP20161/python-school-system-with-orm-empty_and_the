@@ -2,46 +2,75 @@
 <html>
 
 <head>
-<title>Registration</title>
+
+    <title>Registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/reg.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-<form method='POST'>
-<fieldset>
 
-<legend>Applicant informations:</legend>
+    <div class="navbar">
+        <a href="{{ url_for("home") }}"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+        <div method="GET" class="container-fluid text-right navbutton">
+            <a href="{{ url_for("home") }}"><button type="button" class="btn btn-default">Back</button></a>
+        </div>
+    </div>
 
-First name:<br>
-<input type = "text" name= "first_name" value={{ form_data["first_name"] }}><br>
 
-Last name:<br>
-<input type="text" name="last_name" value={{ form_data["last_name"] }}><br><br>
+    <div class="fullscreen ">
+        <video playsinline autoplay muted loop class="fullscreenvideo videohue">
+            <source src="/static/video/Notebook - 117.mp4" type="video/mp4">
+        </video>
+    </div>
 
-E-mail address:<br>
-<input type="email" name="email" value={{ form_data["email"] }}><br><br>
+    <div class="container-fluid text-center">
+        <h1 class="classname">REGISTRATION</h1>
+    </div>
 
-City:<br>
-{% if form_data["city"] != "nocity" and form_data["city"] %}
-<select name="city" >
-<option value={{ form_data["city"] }}>{{ form_data["city"] }}</option>
-{% for element in city_list %}
-<option value={{ element.name }}>{{ element.name }}</option>
-{% endfor %}
-</select>
-{% else %}
-<select name="city" >
-<option value=nocity>Choose a city!</option>
-{% for element in city_list %}
-<option value={{ element.name }}>{{ element.name }}</option>
-{% endfor %}
-</select>
-{% endif %}
+    <div class="container-fluid text-center box">
+        <form method='POST' class="container-fluid">
+          <div class="form-group col-lm-10">
+            <label for="exampleInputEmail1">First name</label>
+            <input type="text" name= "first_name" class="form-control" placeholder="First name" required>
+          </div>
+          <div class="form-group col-lm-10">
+            <label for="exampleInputEmail1">Last name</label>
+            <input type="text" name= "last_name" class="form-control" placeholder="Last name" required>
+          </div>
+          <div class="form-group col-lm-10">
+            <label for="exampleInputEmail1">E-mail address</label>
+            <input type="email" name= "email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="col-lm-10">
+            <label for="sel1">City</label>
+            <select class="form-control" name="city" cols="10" placeholder="Choose a city!" required>
+                <option value="">Choose a city!</option>
+                    {% for element in city_list %}
+                        <option value={{ element.id }}>{{ element.name }}</option>
+                    {% endfor %}
+            </select>
+          </div>
+          <div class="col-lm-10">
+              <label for="submit"></label>
+              <button value="Submit" type="submit" class="form-control submitbtn" required>Save</button>
+              {% for message in get_flashed_messages() %}
+                  <div class=flash>{{ message }}</div>
+              {% endfor %}
+          </div>
 
-<input type="submit" value="Submit">
-</fieldset><br>
-{% for message in get_flashed_messages() %}
-  <div class=flash>{{ message }}</div>
-{% endfor %}
-</form>
+        </form>
+    </div>
+
+
+    <div class="footer navbar-fixed-bottom">
+        <p class= "navbartext">© 2016 | Empty and the All rights reserved</p>
+    </div>
 </body>
 </html>

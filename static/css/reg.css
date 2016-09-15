@@ -1,0 +1,123 @@
+.navbar {
+
+    width: auto;
+    height: 75px;
+    background-color: rgba(225, 225, 225, 0.1);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0px 0px 10px #000000;
+    z-index: 0;
+}
+
+.navbutton {
+    margin-top: 10px;
+    margin: 10px;
+}
+
+
+#logo {
+    padding-top: 17px;
+    padding-left: 15px;
+    position: fixed;
+
+}
+
+h1 {
+    color: white;
+    font-size: 54px;
+    text-shadow: 1px 1px 3px #000000;
+}
+
+label {
+    font-family: helvetica;
+    font-size: 16px;
+}
+
+.fullscreen {
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+
+}
+
+.fullscreenvideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+.btn {
+    position: static;
+    margin-top: 8px;
+    margin-left: 12px;
+    color: white;
+    background: none;
+    border-color: white;
+    border-radius: 25px;
+    border-width: 2px;
+}
+
+.btn:hover {
+    position: static;
+    margin-top: 8px;
+    margin-left: 12px;
+    color: white;
+    background: none;
+    border-color: red;
+    border-radius: 25px;
+    border-width: 2px;
+}
+
+.submitbtn {
+    color: white;
+    background: #D4363C;
+    border-color: #D4363C;
+}
+
+.footer {
+    position: fixed;
+}
+
+.navbar-fixed-bottom {
+    position: fixed;
+    text-align: center;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.navbartext {
+    margin-top: 10px;
+}
+
+.box {
+    /*background-color: rgba(255, 255, 255, 0.2);*/
+    background: white;
+    border-radius: 4px;
+    height: 400px;
+    width: 400px;
+
+    border-style: solid;
+    border-width: thin;
+    border-color: white;
+    padding: 20px;
+
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
