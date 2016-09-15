@@ -7,10 +7,6 @@
     font-family: 'font1';
 }
 
-body {
-    /*background-color: rgba(0, 142, 157, 1);*/
-}
-
 
 .center {
      float: none;
@@ -19,6 +15,8 @@ body {
 }
 
 .navbar {
+    color: white;
+    font-size: 18px;
     height: 75px;
     width: auto;
     background-color: rgba(225, 225, 225, 0.1);
@@ -106,6 +104,7 @@ h5 {
     border-width: thin;
     border-color: white;
     padding: 28px;
+
 }
 
 #logo {
@@ -115,9 +114,14 @@ h5 {
 
 }
 
+#fb {
+    height: 38px;
+    width: 38px;
+}
+
 .btn {
     position: static;
-    margin-top: 5px;
+    margin-top: 3px;
     margin-left: 12px;
     color: white;
     background: none;
@@ -128,7 +132,7 @@ h5 {
 
 .btn:hover {
     position: static;
-    margin-top: 5px;
+    margin-top: 3px;
     margin-left: 12px;
     color: white;
     background: none;
@@ -146,12 +150,6 @@ h5 {
     margin-left: auto ;
     margin-right: auto ;
     width: 500px;
-}
-
-#fb {
-    border-radius: 70px;
-    width: 40px;
-    height: 40px;
 }
 
 #appl_name {
