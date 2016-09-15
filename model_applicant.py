@@ -11,7 +11,33 @@ class Applicant(BaseModel):
     school = ForeignKeyField(School, null=True, related_name="school")
     status = CharField(default="new")
     has_interview = BooleanField(default=False)
-    email = CharField()
+    email = CharField(unique=True)
+
+    # Get the closest school and save it for the new applicant(from webpage registration)
+    def get_school(self):
+        self.school = self.city.school
+        self.status = "in progress"
+        self.save()
+
+    # Get application code and save it for the new applicant and sends email(from webpage registration)
+    def code_generator(self):
+        self.application_code = Applicant.get_free_application_code()
+        self.save()
+        file = open("body_application_email.txt", "r")
+        body = file.read().format(self.first_name, self.last_name,
+                                  self.application_code, self.school.name)
+        file.close()
+        email_application = Email(self.email, "Application details", body)
+        email_application.connect_and_send_email()
+
+    # Send reminder about applicant's application code
+    def send_code_reminder(self):
+        file = open("body_reminder_email.txt", "r")
+        body = file.read().format(self.first_name, self.last_name,
+                                  self.application_code)
+        file.close()
+        email_application = Email(self.email, "Reminder", body)
+        email_application.connect_and_send_email()
 
     # Return the applicant as an object by application_code
     @classmethod

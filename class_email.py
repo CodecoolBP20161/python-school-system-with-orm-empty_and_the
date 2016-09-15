@@ -36,6 +36,12 @@ class Email:
         server.login(cls.fromaddr, cls.password)
         return server
 
+    # Simpler method, older ones haven't changed because of older user strories
+    def connect_and_send_email(self):
+        server = Email.connect_server()
+        self.send_email(server)
+        Email.disconnect_server(server)
+
     # Disconnect gmail server
     @staticmethod
     def disconnect_server(server):

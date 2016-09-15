@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Forget</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/forget.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+   <a href="http://127.0.0.1:5000/home"><img src="/static/img/codecool_logo_horizontal.png" id="logo"></a>
+   <div>
+       <form method="POST" class="form-inline container-fluid text-right navbutton">
+         <div class="form-group">
+           <label class="sr-only" for="email">Email</label>
+           <input type="email" class="form-control navbutton" name='email' id="email" placeholder="Email" requested>
+         </div>
+         <div class="form-group">
+           <label class="sr-only" for="exampleInputPassword3">Code</label>
+           <input type="password" class="form-control navbutton" name='code' id="exampleInputPassword3" placeholder="Appcode" requested>
+         </div>
+         <button type="submit" class="btn btn-default">Log In</button>
+         <a href="{{ url_for("registration") }}"><button type="button" class="btn btn-primary">Sign Up</button></a>
+       </form>
+   </div>
+   </div>
+
+
+   <div>
+        <form method='POST' class="form-inline text-center box">
+            <div class="form-group">
+                <label for="exampleInputEmail1" id="title">Forgotten Application code?</label><br><br>
+                <label class="sr-only" for="exampleInputEmail3">Email</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail3" placeholder="Email" required>
+            <button type="submit" class="btn2 btn-default">Send</button>
+            <label type="text" for="exampleInputEmail1">    Your Welcome!</label><br><br>
+            </div>
+        </form>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning" role="alert">
+                <strong>Warning!</strong>{{ message }}
+                {% if warning == 'email' %}
+                <a href="{{ url_for("registration") }}" class="alert-link" data-dismiss="alert" aria-label="close">Registration</a>
+                {% endif %}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+        {% endfor %}
+    </div>
+    <h5 class="content-fluid text-center info">If you already have an account give us your email address and we will
+        send you your forgotten application code.</h5>
+
+    <div class="footer navbar-fixed-bottom">
+        <p class= "navbartext">© 2016 | Empty and the All rights reserved</p>
+    </div>
+</body>
+</html>
